@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "373429738221",
+    "project_id": "proyectodecoshop",
+    "storage_bucket": "proyectodecoshop.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:373429738221:android:8f053e7bc72e5e6ed74ae4",
+        "android_client_info": {
+          "package_name": "com.decoshop.proyectodecoshop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "373429738221-itu0room7vu4tt5mhu3l2pph8jusc45p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.decoshop.proyectodecoshop",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "373429738221-816em59jg86cfekmfv8gsu720af7b1j2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6nOUqFBkfdCNAfFHH2j6sM0BiLNgVxXw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "373429738221-816em59jg86cfekmfv8gsu720af7b1j2.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "373429738221-97nbnaaj7m8q0qds046fotis3oschrm9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.decoshop.proyectodecoshop"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
