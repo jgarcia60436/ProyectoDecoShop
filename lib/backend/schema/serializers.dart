@@ -2,6 +2,10 @@ import 'package:built_value/standard_json_plugin.dart';
 import 'package:from_css_color/from_css_color.dart';
 
 import 'users_record.dart';
+import 'productos_record.dart';
+import 'consultas_record.dart';
+import 'productos_gustados_record.dart';
+import 'servicios_record.dart';
 
 import 'index.dart';
 
@@ -13,6 +17,10 @@ const kDocumentReferenceField = 'Document__Reference__Field';
 
 @SerializersFor(const [
   UsersRecord,
+  ProductosRecord,
+  ConsultasRecord,
+  ProductosGustadosRecord,
+  ServiciosRecord,
 ])
 final Serializers serializers = (_$serializers.toBuilder()
       ..add(DocumentReferenceSerializer())

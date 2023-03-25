@@ -69,13 +69,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, _) =>
-          appStateNotifier.loggedIn ? HomeWidget() : LoginWidget(),
+          appStateNotifier.loggedIn ? NavBarPage() : LoginWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) =>
-              appStateNotifier.loggedIn ? HomeWidget() : LoginWidget(),
+              appStateNotifier.loggedIn ? NavBarPage() : LoginWidget(),
           routes: [
             FFRoute(
               name: 'Login',
@@ -85,11 +85,97 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'Home',
               path: 'home',
-              builder: (context, params) => HomeWidget(),
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'Home')
+                  : HomeWidget(),
+            ),
+            FFRoute(
+              name: 'Registrarse',
+              path: 'registrarse',
+              builder: (context, params) => RegistrarseWidget(),
+            ),
+            FFRoute(
+              name: 'Carrito',
+              path: 'carrito',
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'Carrito')
+                  : NavBarPage(
+                      initialPage: 'Carrito',
+                      page: CarritoWidget(),
+                    ),
+            ),
+            FFRoute(
+              name: 'MiCuenta',
+              path: 'miCuenta',
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'MiCuenta')
+                  : NavBarPage(
+                      initialPage: 'MiCuenta',
+                      page: MiCuentaWidget(),
+                    ),
+            ),
+            FFRoute(
+              name: 'Ayuda',
+              path: 'ayuda',
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'Ayuda')
+                  : AyudaWidget(),
+            ),
+            FFRoute(
+              name: 'Producto',
+              path: 'producto',
+              builder: (context, params) => NavBarPage(
+                initialPage: '',
+                page: ProductoWidget(
+                  pReferencia: params.getParam('pReferencia',
+                      ParamType.DocumentReference, false, ['productos']),
+                  pNombre: params.getParam('pNombre', ParamType.String),
+                  pDescripcion:
+                      params.getParam('pDescripcion', ParamType.String),
+                  pPrecio: params.getParam('pPrecio', ParamType.double),
+                  pImagen: params.getParam('pImagen', ParamType.String),
+                  pReferenciaGustados: params.getParam(
+                      'pReferenciaGustados',
+                      ParamType.DocumentReference,
+                      false,
+                      ['Productos_gustados']),
+                ),
+              ),
+            ),
+            FFRoute(
+              name: 'Catalogo',
+              path: 'catalogo',
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'Catalogo')
+                  : CatalogoWidget(
+                      productoRef: params.getParam('productoRef',
+                          ParamType.DocumentReference, false, ['productos']),
+                      nombreP: params.getParam('nombreP', ParamType.String),
+                    ),
+            ),
+            FFRoute(
+              name: 'Historial',
+              path: 'historial',
+              builder: (context, params) => HistorialWidget(),
+            ),
+            FFRoute(
+              name: 'OlvidarContra',
+              path: 'olvidarContra',
+              builder: (context, params) => OlvidarContraWidget(),
+            ),
+            FFRoute(
+              name: 'Favorite',
+              path: 'favorite',
+              builder: (context, params) => FavoriteWidget(),
+            ),
+            FFRoute(
+              name: 'CambiarContrasena',
+              path: 'cambiarContrasena',
+              builder: (context, params) => CambiarContrasenaWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
-        ).toRoute(appStateNotifier),
-      ],
+        ),
+      ].map((r) => r.toRoute(appStateNotifier)).toList(),
       urlPathStrategy: UrlPathStrategy.path,
     );
 
@@ -135,6 +221,16 @@ extension NavigationExtensions on BuildContext {
               queryParams: queryParams,
               extra: extra,
             );
+
+  void safePop() {
+    // If there is only one route on the stack, navigate to the initial
+    // page instead of popping.
+    if (GoRouter.of(this).routerDelegate.matches.length <= 1) {
+      go('/');
+    } else {
+      pop();
+    }
+  }
 }
 
 extension GoRouterExtensions on GoRouter {
@@ -146,6 +242,7 @@ extension GoRouterExtensions on GoRouter {
           : appState.updateNotifyOnAuthChange(false);
   bool shouldRedirect(bool ignoreRedirect) =>
       !ignoreRedirect && appState.hasRedirect();
+  void clearRedirectLocation() => appState.clearRedirectLocation();
   void setRedirectLocationIfUnset(String location) =>
       (routerDelegate.refreshListenable as AppStateNotifier)
           .updateNotifyOnAuthChange(false);
