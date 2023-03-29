@@ -1,6 +1,6 @@
-import '/components/ayuda1_widget.dart';
-import '/components/ayuda2_widget.dart';
-import '/components/ayuda3_widget.dart';
+import '/componentes/ayuda1/ayuda1_widget.dart';
+import '/componentes/ayuda2/ayuda2_widget.dart';
+import '/componentes/ayuda3/ayuda3_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';

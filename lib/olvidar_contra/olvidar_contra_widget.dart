@@ -1,8 +1,9 @@
 import '/auth/auth_util.dart';
-import '/components/contra_widget.dart';
+import '/componentes/contra/contra_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_video_player.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -91,7 +92,7 @@ class _OlvidarContraWidgetState extends State<OlvidarContraWidget> {
                       padding: EdgeInsetsDirectional.fromSTEB(
                           10.0, 10.0, 10.0, 10.0),
                       child: Text(
-                        'Las instrucciones para recuperar tu contraseña seran enviadas al correo electronico previamente especificado',
+                        'Por favor escribe el correo electronico asociado a tu cuenta para recibir un email con las instruciones para restablecer tu contraseña:',
                         textAlign: TextAlign.center,
                         style: FlutterFlowTheme.of(context).bodyText1.override(
                               fontFamily: 'Poppins',
@@ -155,57 +156,105 @@ class _OlvidarContraWidgetState extends State<OlvidarContraWidget> {
                   ],
                 ),
               ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    FFButtonWidget(
+                      onPressed: () async {
+                        if (_model.txtCorreoContraController.text.isEmpty) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(
+                                'Email required!',
+                              ),
+                            ),
+                          );
+                          return;
+                        }
+                        await resetPassword(
+                          email: _model.txtCorreoContraController.text,
+                          context: context,
+                        );
+                        await showModalBottomSheet(
+                          isScrollControlled: true,
+                          enableDrag: false,
+                          context: context,
+                          builder: (context) {
+                            return Padding(
+                              padding: MediaQuery.of(context).viewInsets,
+                              child: ContraWidget(),
+                            );
+                          },
+                        ).then((value) => setState(() {}));
+                      },
+                      text: 'Enviar',
+                      options: FFButtonOptions(
+                        width: 140.0,
+                        height: 45.0,
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        iconPadding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: FlutterFlowTheme.of(context).primaryColor,
+                        textStyle:
+                            FlutterFlowTheme.of(context).subtitle2.override(
+                                  fontFamily: 'Poppins',
+                                  color: Colors.white,
+                                ),
+                        borderSide: BorderSide(
+                          color: Colors.transparent,
+                          width: 1.0,
+                        ),
+                        borderRadius: BorderRadius.circular(40.0),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
               Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  FFButtonWidget(
-                    onPressed: () async {
-                      if (_model.txtCorreoContraController.text.isEmpty) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text(
-                              'Email required!',
-                            ),
-                          ),
-                        );
-                        return;
-                      }
-                      await resetPassword(
-                        email: _model.txtCorreoContraController.text,
-                        context: context,
-                      );
-                      await showModalBottomSheet(
-                        isScrollControlled: true,
-                        enableDrag: false,
-                        context: context,
-                        builder: (context) {
-                          return Padding(
-                            padding: MediaQuery.of(context).viewInsets,
-                            child: ContraWidget(),
-                          );
-                        },
-                      ).then((value) => setState(() {}));
-                    },
-                    text: 'Enviar',
-                    options: FFButtonOptions(
-                      width: 140.0,
-                      height: 45.0,
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                      iconPadding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                      color: FlutterFlowTheme.of(context).primaryColor,
-                      textStyle:
-                          FlutterFlowTheme.of(context).subtitle2.override(
-                                fontFamily: 'Poppins',
-                                color: Colors.white,
+                  Expanded(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              20.0, 0.0, 20.0, 0.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  'A continuacion te dejamos un pequeño tutorial que te muestra como cambiar tu contraseña:',
+                                  style: FlutterFlowTheme.of(context).bodyText1,
+                                ),
                               ),
-                      borderSide: BorderSide(
-                        color: Colors.transparent,
-                        width: 1.0,
-                      ),
-                      borderRadius: BorderRadius.circular(40.0),
+                            ],
+                          ),
+                        ),
+                        Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            FlutterFlowVideoPlayer(
+                              path: 'assets/videos/prueba3.mp4',
+                              videoType: VideoType.asset,
+                              width: MediaQuery.of(context).size.width * 0.9,
+                              autoPlay: false,
+                              looping: true,
+                              showControls: true,
+                              allowFullScreen: true,
+                              allowPlaybackSpeedMenu: false,
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
                   ),
                 ],

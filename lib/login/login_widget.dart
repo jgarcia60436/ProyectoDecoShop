@@ -81,6 +81,37 @@ class _LoginWidgetState extends State<LoginWidget> {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 10.0, 0.0),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    if (Theme.of(context).brightness == Brightness.light)
+                      InkWell(
+                        onTap: () async {
+                          setDarkModeSetting(context, ThemeMode.dark);
+                        },
+                        child: Icon(
+                          Icons.nights_stay_rounded,
+                          color: FlutterFlowTheme.of(context).primaryColor,
+                          size: 32.0,
+                        ),
+                      ),
+                    if (Theme.of(context).brightness == Brightness.dark)
+                      InkWell(
+                        onTap: () async {
+                          setDarkModeSetting(context, ThemeMode.light);
+                        },
+                        child: Icon(
+                          Icons.wb_sunny_rounded,
+                          color: FlutterFlowTheme.of(context).primaryBtnText,
+                          size: 32.0,
+                        ),
+                      ),
+                  ],
+                ),
+              ),
               Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -200,39 +231,41 @@ class _LoginWidgetState extends State<LoginWidget> {
                       _model.txtContraControllerValidator.asValidator(context),
                 ),
               ),
-              Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  FFButtonWidget(
-                    onPressed: () async {
-                      context.pushNamed('OlvidarContra');
-                    },
-                    text: 'Olvidaste la contraseña?',
-                    options: FFButtonOptions(
-                      width: 230.0,
-                      height: 40.0,
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                      iconPadding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                      color: Colors.transparent,
-                      textStyle:
-                          FlutterFlowTheme.of(context).subtitle2.override(
-                                fontFamily: 'Poppins',
-                                color: Color(0xFF57636C),
-                                fontSize: 10.0,
-                                fontStyle: FontStyle.italic,
-                              ),
-                      borderSide: BorderSide(
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 0.0),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    FFButtonWidget(
+                      onPressed: () async {
+                        context.pushNamed('OlvidarContra');
+                      },
+                      text: 'Olvidaste la contraseña?',
+                      options: FFButtonOptions(
+                        height: 40.0,
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            10.0, 0.0, 10.0, 0.0),
+                        iconPadding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         color: Colors.transparent,
-                        width: 1.0,
+                        textStyle:
+                            FlutterFlowTheme.of(context).subtitle2.override(
+                                  fontFamily: 'Poppins',
+                                  color: Color(0xFF57636C),
+                                  fontSize: 10.0,
+                                  fontStyle: FontStyle.italic,
+                                ),
+                        borderSide: BorderSide(
+                          color: FlutterFlowTheme.of(context).primaryBtnText,
+                          width: 1.0,
+                        ),
+                        borderRadius: BorderRadius.circular(8.0),
                       ),
-                      borderRadius: BorderRadius.circular(8.0),
+                      showLoadingIndicator: false,
                     ),
-                    showLoadingIndicator: false,
-                  ),
-                ],
+                  ],
+                ),
               ),
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 20.0),
