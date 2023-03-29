@@ -2,7 +2,6 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
-import '/flutter_flow/flutter_flow_toggle_icon.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/gestures.dart';
@@ -43,7 +42,7 @@ class _ProductoWidgetState extends State<ProductoWidget>
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final _unfocusNode = FocusNode();
-
+  var hasIconTriggered = false;
   final animationsMap = {
     'rowOnPageLoadAnimation1': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
@@ -105,12 +104,33 @@ class _ProductoWidgetState extends State<ProductoWidget>
         ),
       ],
     ),
+    'iconOnActionTriggerAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onActionTrigger,
+      applyInitialState: false,
+      effects: [
+        ShakeEffect(
+          curve: Curves.easeIn,
+          delay: 11.ms,
+          duration: 2500.ms,
+          hz: 5,
+          offset: Offset(0.0, 0.0),
+          rotation: 0.227,
+        ),
+      ],
+    ),
   };
 
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => ProductoModel());
+
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
+      this,
+    );
   }
 
   @override
@@ -453,38 +473,68 @@ class _ProductoWidgetState extends State<ProductoWidget>
                         ),
                         Stack(
                           children: [
-                            Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                ToggleIcon(
-                                  onPressed: () async {
-                                    setState(
-                                      () => FFAppState().favorite.contains(
-                                              productoProductosRecord!
-                                                  .reference)
-                                          ? FFAppState().favorite.remove(
-                                              productoProductosRecord!
-                                                  .reference)
-                                          : FFAppState().favorite.add(
-                                              productoProductosRecord!
-                                                  .reference),
-                                    );
-                                  },
-                                  value: FFAppState().favorite.contains(
-                                      productoProductosRecord!.reference),
-                                  onIcon: Icon(
-                                    Icons.favorite,
-                                    color: Color(0xFFA21E1E),
-                                    size: 40.0,
-                                  ),
-                                  offIcon: Icon(
-                                    Icons.favorite_border,
-                                    color: Color(0xFFA21E1E),
-                                    size: 40.0,
-                                  ),
-                                ),
-                              ],
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  20.0, 0.0, 0.0, 0.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  InkWell(
+                                    onTap: () async {
+                                      if (animationsMap[
+                                              'iconOnActionTriggerAnimation'] !=
+                                          null) {
+                                        setState(() => hasIconTriggered = true);
+                                        SchedulerBinding.instance
+                                            .addPostFrameCallback((_) async =>
+                                                await animationsMap[
+                                                        'iconOnActionTriggerAnimation']!
+                                                    .controller
+                                                    .forward(from: 0.0));
+                                      }
+                                      setState(() {
+                                        FFAppState().addToFavoritos(
+                                            widget.pReferencia!);
+                                        FFAppState().corazon = true;
+                                      });
+                                      ScaffoldMessenger.of(context)
+                                          .clearSnackBars();
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          content: Text(
+                                            'Agregado a favoritos',
+                                            style: TextStyle(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                            ),
+                                          ),
+                                          duration:
+                                              Duration(milliseconds: 3000),
+                                          backgroundColor: Color(0xFFDADDDF),
+                                          action: SnackBarAction(
+                                            label: 'Ir a favoritos',
+                                            onPressed: () async {
+                                              context.pushNamed('Favorite');
+                                            },
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                    child: Icon(
+                                      Icons.favorite_rounded,
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryColor,
+                                      size: 34.0,
+                                    ),
+                                  ).animateOnActionTrigger(
+                                      animationsMap[
+                                          'iconOnActionTriggerAnimation']!,
+                                      hasBeenTriggered: hasIconTriggered),
+                                ],
+                              ),
                             ),
                           ],
                         ),

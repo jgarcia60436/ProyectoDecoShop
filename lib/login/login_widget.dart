@@ -91,6 +91,16 @@ class _LoginWidgetState extends State<LoginWidget> {
                       InkWell(
                         onTap: () async {
                           setDarkModeSetting(context, ThemeMode.dark);
+                          if ((Theme.of(context).brightness ==
+                                  Brightness.dark) ||
+                              (Theme.of(context).brightness ==
+                                  Brightness.light)) {
+                            await Future.delayed(
+                                const Duration(milliseconds: 1000));
+                          } else {
+                            await Future.delayed(
+                                const Duration(milliseconds: 1000));
+                          }
                         },
                         child: Icon(
                           Icons.nights_stay_rounded,
@@ -119,16 +129,11 @@ class _LoginWidgetState extends State<LoginWidget> {
                   Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(0.0, 25.0, 0.0, 25.0),
-                    child: InkWell(
-                      onTap: () async {
-                        setDarkModeSetting(context, ThemeMode.dark);
-                      },
-                      child: Image.asset(
-                        'assets/images/decoshop-removebg-preview.png',
-                        width: 300.0,
-                        height: 300.0,
-                        fit: BoxFit.cover,
-                      ),
+                    child: Image.asset(
+                      'assets/images/decoshop-removebg-preview.png',
+                      width: 300.0,
+                      height: 300.0,
+                      fit: BoxFit.cover,
                     ),
                   ),
                 ],
