@@ -23,6 +23,9 @@ class FFAppState extends ChangeNotifier {
     _favorite =
         prefs.getStringList('ff_favorite')?.map((path) => path.ref).toList() ??
             _favorite;
+    _favoritos =
+        prefs.getStringList('ff_favoritos')?.map((path) => path.ref).toList() ??
+            _favoritos;
   }
 
   void update(VoidCallback callback) {
@@ -93,6 +96,34 @@ class FFAppState extends ChangeNotifier {
   void removeAtIndexFromFavorite(int _index) {
     _favorite.removeAt(_index);
     prefs.setStringList('ff_favorite', _favorite.map((x) => x.path).toList());
+  }
+
+  List<DocumentReference> _favoritos = [];
+  List<DocumentReference> get favoritos => _favoritos;
+  set favoritos(List<DocumentReference> _value) {
+    _favoritos = _value;
+    prefs.setStringList('ff_favoritos', _value.map((x) => x.path).toList());
+  }
+
+  void addToFavoritos(DocumentReference _value) {
+    _favoritos.add(_value);
+    prefs.setStringList('ff_favoritos', _favoritos.map((x) => x.path).toList());
+  }
+
+  void removeFromFavoritos(DocumentReference _value) {
+    _favoritos.remove(_value);
+    prefs.setStringList('ff_favoritos', _favoritos.map((x) => x.path).toList());
+  }
+
+  void removeAtIndexFromFavoritos(int _index) {
+    _favoritos.removeAt(_index);
+    prefs.setStringList('ff_favoritos', _favoritos.map((x) => x.path).toList());
+  }
+
+  bool _corazon = false;
+  bool get corazon => _corazon;
+  set corazon(bool _value) {
+    _corazon = _value;
   }
 }
 

@@ -78,7 +78,7 @@ class _FavoriteWidgetState extends State<FavoriteWidget> {
             padding: EdgeInsetsDirectional.fromSTEB(20.0, 50.0, 20.0, 0.0),
             child: Builder(
               builder: (context) {
-                final favorite = FFAppState().favorite.toList();
+                final favorite = FFAppState().favoritos.toList();
                 return SingleChildScrollView(
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
@@ -93,9 +93,9 @@ class _FavoriteWidgetState extends State<FavoriteWidget> {
                             child: Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   10.0, 20.0, 10.0, 0.0),
-                              child: StreamBuilder<ProductosGustadosRecord>(
-                                stream: ProductosGustadosRecord.getDocument(
-                                    favoriteItem),
+                              child: StreamBuilder<ProductosRecord>(
+                                stream:
+                                    ProductosRecord.getDocument(favoriteItem),
                                 builder: (context, snapshot) {
                                   // Customize what your widget looks like when it's loading.
                                   if (!snapshot.hasData) {
@@ -110,8 +110,7 @@ class _FavoriteWidgetState extends State<FavoriteWidget> {
                                       ),
                                     );
                                   }
-                                  final cardProductosGustadosRecord =
-                                      snapshot.data!;
+                                  final cardProductosRecord = snapshot.data!;
                                   return Card(
                                     clipBehavior: Clip.antiAliasWithSaveLayer,
                                     color: FlutterFlowTheme.of(context)
@@ -125,79 +124,82 @@ class _FavoriteWidgetState extends State<FavoriteWidget> {
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
-                                          ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(15.0),
-                                            child: Image.network(
-                                              cardProductosGustadosRecord
-                                                  .imagen!,
-                                              width: 100.0,
-                                              height: 100.0,
-                                              fit: BoxFit.cover,
+                                          Expanded(
+                                            child: ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(15.0),
+                                              child: Image.network(
+                                                cardProductosRecord.imagen!,
+                                                width: 100.0,
+                                                height: 100.0,
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ),
+                                          ),
+                                          Expanded(
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      15.0, 0.0, 15.0, 0.0),
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [
+                                                      Expanded(
+                                                        child: Text(
+                                                          cardProductosRecord
+                                                              .nombre!,
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyText1,
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                  Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [
+                                                      Text(
+                                                        cardProductosRecord
+                                                            .precio!
+                                                            .toString(),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyText1,
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ],
+                                              ),
                                             ),
                                           ),
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    15.0, 0.0, 15.0, 0.0),
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: [
-                                                    Text(
-                                                      cardProductosGustadosRecord
-                                                          .nombre!,
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyText1,
-                                                    ),
-                                                  ],
-                                                ),
-                                                Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: [
-                                                    Text(
-                                                      cardProductosGustadosRecord
-                                                          .precio!
-                                                          .toString(),
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyText1,
-                                                    ),
-                                                  ],
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    60.0, 0.0, 0.0, 0.0),
+                                                    30.0, 0.0, 0.0, 0.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               mainAxisAlignment:
-                                                  MainAxisAlignment.end,
+                                                  MainAxisAlignment.spaceEvenly,
                                               children: [
                                                 InkWell(
                                                   onTap: () async {
                                                     setState(() {
                                                       FFAppState()
-                                                          .removeFromFavorite(
-                                                              cardProductosGustadosRecord
-                                                                  .reference);
+                                                          .removeFromFavoritos(
+                                                              favoriteItem);
                                                     });
                                                     ScaffoldMessenger.of(
                                                             context)
                                                         .showSnackBar(
                                                       SnackBar(
                                                         content: Text(
-                                                          'El articulo se elimino ',
+                                                          'El articulo se elimino de favoritos',
                                                           style: TextStyle(
                                                             color: FlutterFlowTheme
                                                                     .of(context)
@@ -217,6 +219,60 @@ class _FavoriteWidgetState extends State<FavoriteWidget> {
                                                     Icons.delete_outline,
                                                     color: Colors.black,
                                                     size: 30.0,
+                                                  ),
+                                                ),
+                                                InkWell(
+                                                  onTap: () async {
+                                                    setState(() {
+                                                      FFAppState().addToCarrito(
+                                                          favoriteItem);
+                                                      FFAppState().carritoSum =
+                                                          FFAppState()
+                                                                  .carritoSum +
+                                                              cardProductosRecord
+                                                                  .precio!;
+                                                    });
+                                                    ScaffoldMessenger.of(
+                                                            context)
+                                                        .clearSnackBars();
+                                                    ScaffoldMessenger.of(
+                                                            context)
+                                                        .showSnackBar(
+                                                      SnackBar(
+                                                        content: Text(
+                                                          'Articulo agregado al carrito de compras',
+                                                          style: TextStyle(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primaryText,
+                                                          ),
+                                                        ),
+                                                        duration: Duration(
+                                                            milliseconds: 2000),
+                                                        backgroundColor:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .secondaryColor,
+                                                        action: SnackBarAction(
+                                                          label:
+                                                              'Ir al carrito de compras',
+                                                          onPressed: () async {
+                                                            context.pushNamed(
+                                                                'Carrito');
+                                                          },
+                                                        ),
+                                                      ),
+                                                    );
+                                                    setState(() {
+                                                      FFAppState()
+                                                          .removeFromFavoritos(
+                                                              favoriteItem);
+                                                    });
+                                                  },
+                                                  child: Icon(
+                                                    Icons.shopping_cart,
+                                                    color: Colors.black,
+                                                    size: 24.0,
                                                   ),
                                                 ),
                                               ],
