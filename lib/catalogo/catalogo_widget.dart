@@ -73,464 +73,409 @@ class _CatalogoWidgetState extends State<CatalogoWidget>
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-      body: NestedScrollView(
-        headerSliverBuilder: (context, _) => [
-          SliverAppBar(
-            pinned: true,
-            floating: true,
-            snap: false,
-            backgroundColor: FlutterFlowTheme.of(context).primaryColor,
-            automaticallyImplyLeading: false,
-            actions: [],
-            flexibleSpace: FlexibleSpaceBar(
-              background: Row(
+      body: SafeArea(
+        child: GestureDetector(
+          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+          child: Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 15.0),
+            child: SingleChildScrollView(
+              child: Column(
                 mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  if (Theme.of(context).brightness == Brightness.light)
-                    InkWell(
-                      onTap: () async {
-                        setDarkModeSetting(context, ThemeMode.dark);
-                      },
-                      child: FaIcon(
-                        FontAwesomeIcons.solidMoon,
-                        color: Colors.black,
-                        size: 24.0,
-                      ),
-                    ),
-                  if (Theme.of(context).brightness == Brightness.dark)
-                    InkWell(
-                      onTap: () async {
-                        setDarkModeSetting(context, ThemeMode.light);
-                      },
-                      child: Icon(
-                        Icons.wb_sunny_rounded,
-                        color: Colors.black,
-                        size: 24.0,
-                      ),
-                    ),
-                ],
-              ),
-            ),
-            centerTitle: false,
-            elevation: 2.0,
-          )
-        ],
-        body: Builder(
-          builder: (context) {
-            return SafeArea(
-              child: GestureDetector(
-                onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
-                child: Padding(
-                  padding:
-                      EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 15.0),
-                  child: SingleChildScrollView(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Expanded(
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    20.0, 20.0, 20.0, 20.0),
-                                child: TextFormField(
-                                  controller: _model.textController,
-                                  onChanged: (_) => EasyDebounce.debounce(
-                                    '_model.textController',
-                                    Duration(milliseconds: 100),
-                                    () async {
-                                      setState(() {
-                                        FFAppState().vNombreBuscar =
-                                            _model.textController.text;
-                                      });
-                                    },
-                                  ),
-                                  autofocus: true,
-                                  obscureText: false,
-                                  decoration: InputDecoration(
-                                    hintText: 'Buscar Productos',
-                                    hintStyle:
-                                        FlutterFlowTheme.of(context).bodyText2,
-                                    enabledBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Color(0x00000000),
-                                        width: 1.0,
-                                      ),
-                                      borderRadius: const BorderRadius.only(
-                                        topLeft: Radius.circular(4.0),
-                                        topRight: Radius.circular(4.0),
-                                      ),
-                                    ),
-                                    focusedBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Color(0x00000000),
-                                        width: 1.0,
-                                      ),
-                                      borderRadius: const BorderRadius.only(
-                                        topLeft: Radius.circular(4.0),
-                                        topRight: Radius.circular(4.0),
-                                      ),
-                                    ),
-                                    errorBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Color(0x00000000),
-                                        width: 1.0,
-                                      ),
-                                      borderRadius: const BorderRadius.only(
-                                        topLeft: Radius.circular(4.0),
-                                        topRight: Radius.circular(4.0),
-                                      ),
-                                    ),
-                                    focusedErrorBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Color(0x00000000),
-                                        width: 1.0,
-                                      ),
-                                      borderRadius: const BorderRadius.only(
-                                        topLeft: Radius.circular(4.0),
-                                        topRight: Radius.circular(4.0),
-                                      ),
-                                    ),
-                                  ),
-                                  style: FlutterFlowTheme.of(context).bodyText1,
-                                  validator: _model.textControllerValidator
-                                      .asValidator(context),
+                  Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Expanded(
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              20.0, 20.0, 20.0, 20.0),
+                          child: TextFormField(
+                            controller: _model.textController,
+                            onChanged: (_) => EasyDebounce.debounce(
+                              '_model.textController',
+                              Duration(milliseconds: 100),
+                              () async {
+                                setState(() {
+                                  FFAppState().vNombreBuscar =
+                                      _model.textController.text;
+                                });
+                              },
+                            ),
+                            autofocus: true,
+                            obscureText: false,
+                            decoration: InputDecoration(
+                              hintText: 'Buscar Productos',
+                              hintStyle: FlutterFlowTheme.of(context).bodyText2,
+                              enabledBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color(0x00000000),
+                                  width: 1.0,
+                                ),
+                                borderRadius: const BorderRadius.only(
+                                  topLeft: Radius.circular(4.0),
+                                  topRight: Radius.circular(4.0),
+                                ),
+                              ),
+                              focusedBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color(0x00000000),
+                                  width: 1.0,
+                                ),
+                                borderRadius: const BorderRadius.only(
+                                  topLeft: Radius.circular(4.0),
+                                  topRight: Radius.circular(4.0),
+                                ),
+                              ),
+                              errorBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color(0x00000000),
+                                  width: 1.0,
+                                ),
+                                borderRadius: const BorderRadius.only(
+                                  topLeft: Radius.circular(4.0),
+                                  topRight: Radius.circular(4.0),
+                                ),
+                              ),
+                              focusedErrorBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color(0x00000000),
+                                  width: 1.0,
+                                ),
+                                borderRadius: const BorderRadius.only(
+                                  topLeft: Radius.circular(4.0),
+                                  topRight: Radius.circular(4.0),
                                 ),
                               ),
                             ),
-                          ],
+                            style: FlutterFlowTheme.of(context).bodyText1,
+                            validator: _model.textControllerValidator
+                                .asValidator(context),
+                          ),
                         ),
-                        Row(
-                          mainAxisSize: MainAxisSize.max,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Expanded(
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    10.0, 15.0, 20.0, 0.0),
-                                child: StreamBuilder<List<ProductosRecord>>(
-                                  stream: queryProductosRecord(
-                                    queryBuilder: (productosRecord) =>
-                                        productosRecord.where('Nombre',
-                                            isEqualTo:
-                                                FFAppState().vNombreBuscar != ''
-                                                    ? FFAppState().vNombreBuscar
-                                                    : null),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisSize: MainAxisSize.max,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              10.0, 15.0, 20.0, 0.0),
+                          child: StreamBuilder<List<ProductosRecord>>(
+                            stream: queryProductosRecord(
+                              queryBuilder: (productosRecord) =>
+                                  productosRecord.where('Nombre',
+                                      isEqualTo:
+                                          FFAppState().vNombreBuscar != ''
+                                              ? FFAppState().vNombreBuscar
+                                              : null),
+                            ),
+                            builder: (context, snapshot) {
+                              // Customize what your widget looks like when it's loading.
+                              if (!snapshot.hasData) {
+                                return Center(
+                                  child: SizedBox(
+                                    width: 50.0,
+                                    height: 50.0,
+                                    child: CircularProgressIndicator(
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryColor,
+                                    ),
                                   ),
-                                  builder: (context, snapshot) {
-                                    // Customize what your widget looks like when it's loading.
-                                    if (!snapshot.hasData) {
-                                      return Center(
-                                        child: SizedBox(
-                                          width: 50.0,
-                                          height: 50.0,
-                                          child: CircularProgressIndicator(
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryColor,
-                                          ),
-                                        ),
-                                      );
-                                    }
-                                    List<ProductosRecord>
-                                        columnProductosRecordList =
-                                        snapshot.data!;
-                                    return SingleChildScrollView(
-                                      child: Column(
+                                );
+                              }
+                              List<ProductosRecord> columnProductosRecordList =
+                                  snapshot.data!;
+                              return SingleChildScrollView(
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: List.generate(
+                                      columnProductosRecordList.length,
+                                      (columnIndex) {
+                                    final columnProductosRecord =
+                                        columnProductosRecordList[columnIndex];
+                                    return InkWell(
+                                      onTap: () async {
+                                        context.pushNamed(
+                                          'Producto',
+                                          queryParams: {
+                                            'pReferencia': serializeParam(
+                                              columnProductosRecord.reference,
+                                              ParamType.DocumentReference,
+                                            ),
+                                            'pNombre': serializeParam(
+                                              columnProductosRecord.nombre,
+                                              ParamType.String,
+                                            ),
+                                            'pDescripcion': serializeParam(
+                                              columnProductosRecord.descripcion,
+                                              ParamType.String,
+                                            ),
+                                            'pPrecio': serializeParam(
+                                              columnProductosRecord.precio,
+                                              ParamType.double,
+                                            ),
+                                            'pImagen': serializeParam(
+                                              columnProductosRecord.imagen,
+                                              ParamType.String,
+                                            ),
+                                          }.withoutNulls,
+                                        );
+                                      },
+                                      child: Row(
                                         mainAxisSize: MainAxisSize.max,
-                                        children: List.generate(
-                                            columnProductosRecordList.length,
-                                            (columnIndex) {
-                                          final columnProductosRecord =
-                                              columnProductosRecordList[
-                                                  columnIndex];
-                                          return InkWell(
-                                            onTap: () async {
-                                              context.pushNamed(
-                                                'Producto',
-                                                queryParams: {
-                                                  'pReferencia': serializeParam(
-                                                    columnProductosRecord
-                                                        .reference,
-                                                    ParamType.DocumentReference,
+                                        children: [
+                                          Expanded(
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 10.0, 0.0, 0.0),
+                                              child: Container(
+                                                width: 100.0,
+                                                height: 100.0,
+                                                decoration: BoxDecoration(
+                                                  gradient: LinearGradient(
+                                                    colors: [
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primaryColor,
+                                                      Color(0xFF3995EF)
+                                                    ],
+                                                    stops: [0.0, 1.0],
+                                                    begin: AlignmentDirectional(
+                                                        0.0, -1.0),
+                                                    end: AlignmentDirectional(
+                                                        0, 1.0),
                                                   ),
-                                                  'pNombre': serializeParam(
-                                                    columnProductosRecord
-                                                        .nombre,
-                                                    ParamType.String,
+                                                  borderRadius:
+                                                      BorderRadius.only(
+                                                    bottomLeft:
+                                                        Radius.circular(0.0),
+                                                    bottomRight:
+                                                        Radius.circular(30.0),
+                                                    topLeft:
+                                                        Radius.circular(30.0),
+                                                    topRight:
+                                                        Radius.circular(0.0),
                                                   ),
-                                                  'pDescripcion':
-                                                      serializeParam(
-                                                    columnProductosRecord
-                                                        .descripcion,
-                                                    ParamType.String,
-                                                  ),
-                                                  'pPrecio': serializeParam(
-                                                    columnProductosRecord
-                                                        .precio,
-                                                    ParamType.double,
-                                                  ),
-                                                  'pImagen': serializeParam(
-                                                    columnProductosRecord
-                                                        .imagen,
-                                                    ParamType.String,
-                                                  ),
-                                                }.withoutNulls,
-                                              );
-                                            },
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                Expanded(
-                                                  child: Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 10.0,
-                                                                0.0, 0.0),
-                                                    child: Container(
-                                                      width: 100.0,
-                                                      height: 100.0,
-                                                      decoration: BoxDecoration(
-                                                        gradient:
-                                                            LinearGradient(
-                                                          colors: [
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryColor,
-                                                            Color(0xFF3995EF)
-                                                          ],
-                                                          stops: [0.0, 1.0],
-                                                          begin:
-                                                              AlignmentDirectional(
-                                                                  0.0, -1.0),
-                                                          end:
-                                                              AlignmentDirectional(
-                                                                  0, 1.0),
+                                                ),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  10.0,
+                                                                  0.0,
+                                                                  10.0,
+                                                                  0.0),
+                                                      child: Material(
+                                                        color:
+                                                            Colors.transparent,
+                                                        elevation: 2.0,
+                                                        shape:
+                                                            RoundedRectangleBorder(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      100.0),
                                                         ),
-                                                        borderRadius:
-                                                            BorderRadius.only(
-                                                          bottomLeft:
-                                                              Radius.circular(
-                                                                  0.0),
-                                                          bottomRight:
-                                                              Radius.circular(
-                                                                  30.0),
-                                                          topLeft:
-                                                              Radius.circular(
-                                                                  30.0),
-                                                          topRight:
-                                                              Radius.circular(
-                                                                  0.0),
+                                                        child: Container(
+                                                          width: 80.0,
+                                                          height: 90.0,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            gradient:
+                                                                LinearGradient(
+                                                              colors: [
+                                                                Color(
+                                                                    0xFF152D68),
+                                                                Color(
+                                                                    0xFF97B2EC)
+                                                              ],
+                                                              stops: [0.0, 1.0],
+                                                              begin:
+                                                                  AlignmentDirectional(
+                                                                      0.0,
+                                                                      -1.0),
+                                                              end:
+                                                                  AlignmentDirectional(
+                                                                      0, 1.0),
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        100.0),
+                                                          ),
+                                                          child: Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        10.0,
+                                                                        10.0,
+                                                                        10.0,
+                                                                        10.0),
+                                                            child: ClipRRect(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          10.0),
+                                                              child:
+                                                                  Image.network(
+                                                                columnProductosRecord
+                                                                    .imagen!,
+                                                                width: 100.0,
+                                                                height: 70.0,
+                                                                fit: BoxFit
+                                                                    .cover,
+                                                              ),
+                                                            ),
+                                                          ),
                                                         ),
                                                       ),
-                                                      child: Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        children: [
-                                                          Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        10.0,
-                                                                        0.0,
-                                                                        10.0,
-                                                                        0.0),
-                                                            child: Material(
-                                                              color: Colors
-                                                                  .transparent,
-                                                              elevation: 2.0,
-                                                              shape:
-                                                                  RoundedRectangleBorder(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            100.0),
-                                                              ),
-                                                              child: Container(
-                                                                width: 80.0,
-                                                                height: 90.0,
-                                                                decoration:
-                                                                    BoxDecoration(
-                                                                  gradient:
-                                                                      LinearGradient(
-                                                                    colors: [
-                                                                      Color(
-                                                                          0xFF152D68),
-                                                                      Color(
-                                                                          0xFF97B2EC)
-                                                                    ],
-                                                                    stops: [
-                                                                      0.0,
-                                                                      1.0
-                                                                    ],
-                                                                    begin:
-                                                                        AlignmentDirectional(
-                                                                            0.0,
-                                                                            -1.0),
-                                                                    end: AlignmentDirectional(
-                                                                        0, 1.0),
-                                                                  ),
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              100.0),
-                                                                ),
-                                                                child: Padding(
-                                                                  padding: EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          10.0,
-                                                                          10.0,
-                                                                          10.0,
-                                                                          10.0),
-                                                                  child:
-                                                                      ClipRRect(
-                                                                    borderRadius:
-                                                                        BorderRadius.circular(
-                                                                            10.0),
-                                                                    child: Image
-                                                                        .network(
-                                                                      columnProductosRecord
-                                                                          .imagen!,
-                                                                      width:
-                                                                          100.0,
-                                                                      height:
-                                                                          70.0,
-                                                                      fit: BoxFit
-                                                                          .cover,
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                          Expanded(
-                                                            child: Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          10.0,
-                                                                          0.0),
-                                                              child: Column(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                mainAxisAlignment:
-                                                                    MainAxisAlignment
-                                                                        .center,
-                                                                crossAxisAlignment:
-                                                                    CrossAxisAlignment
-                                                                        .start,
-                                                                children: [
-                                                                  Row(
-                                                                    mainAxisSize:
-                                                                        MainAxisSize
-                                                                            .max,
-                                                                    children: [
-                                                                      Expanded(
-                                                                        child:
-                                                                            Text(
-                                                                          columnProductosRecord
-                                                                              .nombre!,
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodyText1
-                                                                              .override(
-                                                                                fontFamily: 'Poppins',
-                                                                                color: FlutterFlowTheme.of(context).primaryBtnText,
-                                                                                fontSize: 14.0,
-                                                                                fontWeight: FontWeight.w600,
-                                                                              ),
-                                                                        ),
-                                                                      ),
-                                                                    ],
-                                                                  ),
-                                                                  Row(
-                                                                    mainAxisSize:
-                                                                        MainAxisSize
-                                                                            .max,
-                                                                    children: [
-                                                                      RichText(
-                                                                        text:
-                                                                            TextSpan(
-                                                                          children: [
-                                                                            TextSpan(
-                                                                              text: '₡ ',
-                                                                              style: TextStyle(
-                                                                                color: FlutterFlowTheme.of(context).primaryBtnText,
-                                                                                fontWeight: FontWeight.w500,
-                                                                                fontSize: 14.0,
-                                                                              ),
-                                                                            ),
-                                                                            TextSpan(
-                                                                              text: columnProductosRecord.precio!.toString(),
-                                                                              style: TextStyle(
-                                                                                color: FlutterFlowTheme.of(context).primaryBtnText,
-                                                                                fontWeight: FontWeight.w500,
-                                                                                fontSize: 14.0,
-                                                                              ),
-                                                                            )
-                                                                          ],
-                                                                          style:
-                                                                              FlutterFlowTheme.of(context).bodyText1,
-                                                                        ),
-                                                                      ),
-                                                                    ],
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                            ),
-                                                          ),
-                                                          Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        0.0,
-                                                                        0.0,
-                                                                        10.0,
-                                                                        0.0),
-                                                            child: Row(
+                                                    ),
+                                                    Expanded(
+                                                      child: Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0.0,
+                                                                    0.0,
+                                                                    10.0,
+                                                                    0.0),
+                                                        child: Column(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .center,
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .start,
+                                                          children: [
+                                                            Row(
                                                               mainAxisSize:
                                                                   MainAxisSize
                                                                       .max,
                                                               children: [
-                                                                Icon(
-                                                                  Icons
-                                                                      .keyboard_arrow_right_rounded,
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primaryBtnText,
-                                                                  size: 24.0,
+                                                                Expanded(
+                                                                  child: Text(
+                                                                    columnProductosRecord
+                                                                        .nombre!,
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyText1
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              'Poppins',
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).primaryBtnText,
+                                                                          fontSize:
+                                                                              14.0,
+                                                                          fontWeight:
+                                                                              FontWeight.w600,
+                                                                        ),
+                                                                  ),
                                                                 ),
                                                               ],
                                                             ),
+                                                            Row(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              children: [
+                                                                RichText(
+                                                                  text:
+                                                                      TextSpan(
+                                                                    children: [
+                                                                      TextSpan(
+                                                                        text:
+                                                                            '₡ ',
+                                                                        style:
+                                                                            TextStyle(
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).primaryBtnText,
+                                                                          fontWeight:
+                                                                              FontWeight.w500,
+                                                                          fontSize:
+                                                                              14.0,
+                                                                        ),
+                                                                      ),
+                                                                      TextSpan(
+                                                                        text: columnProductosRecord
+                                                                            .precio!
+                                                                            .toString(),
+                                                                        style:
+                                                                            TextStyle(
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).primaryBtnText,
+                                                                          fontWeight:
+                                                                              FontWeight.w500,
+                                                                          fontSize:
+                                                                              14.0,
+                                                                        ),
+                                                                      )
+                                                                    ],
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyText1,
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  10.0,
+                                                                  0.0),
+                                                      child: Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        children: [
+                                                          Icon(
+                                                            Icons
+                                                                .keyboard_arrow_right_rounded,
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primaryBtnText,
+                                                            size: 24.0,
                                                           ),
                                                         ],
                                                       ),
                                                     ),
-                                                  ),
+                                                  ],
                                                 ),
-                                              ],
+                                              ),
                                             ),
-                                          ).animateOnPageLoad(animationsMap[
-                                              'rowOnPageLoadAnimation']!);
-                                        }),
+                                          ),
+                                        ],
                                       ),
-                                    );
-                                  },
+                                    ).animateOnPageLoad(animationsMap[
+                                        'rowOnPageLoadAnimation']!);
+                                  }),
                                 ),
-                              ),
-                            ),
-                          ],
+                              );
+                            },
+                          ),
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                ),
+                ],
               ),
-            );
-          },
+            ),
+          ),
         ),
       ),
     );

@@ -1,5 +1,6 @@
 import '/auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/componentes/registro/registro_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -333,6 +334,18 @@ class _RegistrarseWidgetState extends State<RegistrarseWidget> {
                         await UsersRecord.collection
                             .doc(user.uid)
                             .update(usersCreateData);
+
+                        await showModalBottomSheet(
+                          isScrollControlled: true,
+                          enableDrag: false,
+                          context: context,
+                          builder: (context) {
+                            return Padding(
+                              padding: MediaQuery.of(context).viewInsets,
+                              child: RegistroWidget(),
+                            );
+                          },
+                        ).then((value) => setState(() {}));
 
                         context.goNamedAuth('Home', mounted);
                       },

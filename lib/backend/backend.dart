@@ -10,6 +10,7 @@ import 'schema/productos_record.dart';
 import 'schema/consultas_record.dart';
 import 'schema/productos_gustados_record.dart';
 import 'schema/servicios_record.dart';
+import 'schema/compra_record.dart';
 import 'schema/serializers.dart';
 
 export 'dart:async' show StreamSubscription;
@@ -22,6 +23,7 @@ export 'schema/productos_record.dart';
 export 'schema/consultas_record.dart';
 export 'schema/productos_gustados_record.dart';
 export 'schema/servicios_record.dart';
+export 'schema/compra_record.dart';
 
 /// Functions to query UsersRecords (as a Stream and as a Future).
 Future<int> queryUsersRecordCount({
@@ -278,6 +280,58 @@ Future<FFFirestorePage<ServiciosRecord>> queryServiciosRecordPage({
     queryCollectionPage(
       ServiciosRecord.collection,
       ServiciosRecord.serializer,
+      queryBuilder: queryBuilder,
+      nextPageMarker: nextPageMarker,
+      pageSize: pageSize,
+      isStream: isStream,
+    );
+
+/// Functions to query CompraRecords (as a Stream and as a Future).
+Future<int> queryCompraRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      CompraRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<CompraRecord>> queryCompraRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      CompraRecord.collection,
+      CompraRecord.serializer,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<CompraRecord>> queryCompraRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      CompraRecord.collection,
+      CompraRecord.serializer,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<FFFirestorePage<CompraRecord>> queryCompraRecordPage({
+  Query Function(Query)? queryBuilder,
+  DocumentSnapshot? nextPageMarker,
+  required int pageSize,
+  required bool isStream,
+}) =>
+    queryCollectionPage(
+      CompraRecord.collection,
+      CompraRecord.serializer,
       queryBuilder: queryBuilder,
       nextPageMarker: nextPageMarker,
       pageSize: pageSize,

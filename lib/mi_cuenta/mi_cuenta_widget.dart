@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'mi_cuenta_model.dart';
@@ -134,13 +135,14 @@ class _MiCuentaWidgetState extends State<MiCuentaWidget> {
                         : null;
                     return Column(
                       mainAxisSize: MainAxisSize.max,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 15.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Text(
                                 columnUsersRecord!.displayName!,
@@ -151,7 +153,7 @@ class _MiCuentaWidgetState extends State<MiCuentaWidget> {
                         ),
                         Row(
                           mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
@@ -163,15 +165,67 @@ class _MiCuentaWidgetState extends State<MiCuentaWidget> {
                             ),
                           ],
                         ),
+                        Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 15.0),
+                              child: Text(
+                                columnUsersRecord!.phoneNumber!,
+                                style: FlutterFlowTheme.of(context).bodyText1,
+                              ),
+                            ),
+                          ],
+                        ),
                       ],
                     );
                   },
                 ),
               ),
+              Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 60.0, 0.0, 0.0),
+                    child: Text(
+                      'Califica tu experiencia en nustra página!',
+                      style: FlutterFlowTheme.of(context).bodyText1,
+                    ),
+                  ),
+                ],
+              ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(10.0, 30.0, 10.0, 50.0),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 60.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    RatingBar.builder(
+                      onRatingUpdate: (newValue) =>
+                          setState(() => _model.ratingBarValue = newValue),
+                      itemBuilder: (context, index) => Icon(
+                        Icons.star_rounded,
+                        color: FlutterFlowTheme.of(context).secondaryColor,
+                      ),
+                      direction: Axis.horizontal,
+                      initialRating: _model.ratingBarValue ??= 3.0,
+                      unratedColor: Color(0xFF9E9E9E),
+                      itemCount: 5,
+                      itemSize: 40.0,
+                      glowColor: FlutterFlowTheme.of(context).secondaryColor,
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(10.0, 60.0, 10.0, 50.0),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Expanded(
                       child: Text(
@@ -195,51 +249,6 @@ class _MiCuentaWidgetState extends State<MiCuentaWidget> {
                           color: Colors.black,
                           size: 35.0,
                         ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(10.0, 20.0, 10.0, 0.0),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Expanded(
-                      child: Text(
-                        ' HISTORIAL DE COMPRA',
-                        textAlign: TextAlign.center,
-                        style: FlutterFlowTheme.of(context).bodyText1.override(
-                              fontFamily: 'Poppins',
-                              fontSize: 27.0,
-                            ),
-                      ),
-                    ),
-                    Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 15.0, 0.0),
-                      child: Icon(
-                        Icons.arrow_forward,
-                        color: Colors.black,
-                        size: 35.0,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(10.0, 30.0, 10.0, 40.0),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Expanded(
-                      child: Text(
-                        'PROXIMAMENTE...',
-                        textAlign: TextAlign.center,
-                        style: FlutterFlowTheme.of(context).bodyText1.override(
-                              fontFamily: 'Poppins',
-                              fontSize: 20.0,
-                            ),
                       ),
                     ),
                   ],

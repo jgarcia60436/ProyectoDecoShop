@@ -88,6 +88,21 @@ class _CambiarContrasenaWidgetState extends State<CambiarContrasenaWidget> {
                   children: [
                     Expanded(
                       child: Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            0.0, 20.0, 0.0, 20.0),
+                        child: Text(
+                          'Por favor digitar una nueva contraseña para su cuenta.',
+                          style: FlutterFlowTheme.of(context).bodyText1,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Expanded(
+                      child: Padding(
                         padding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 15.0),
                         child: TextFormField(
