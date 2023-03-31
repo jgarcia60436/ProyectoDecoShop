@@ -51,7 +51,7 @@ class _RegistrarseWidgetState extends State<RegistrarseWidget> {
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
       appBar: AppBar(
-        backgroundColor: FlutterFlowTheme.of(context).primaryColor,
+        backgroundColor: FlutterFlowTheme.of(context).primary,
         automaticallyImplyLeading: false,
         leading: FlutterFlowIconButton(
           borderColor: Colors.transparent,
@@ -69,7 +69,7 @@ class _RegistrarseWidgetState extends State<RegistrarseWidget> {
         ),
         title: Text(
           'Registrarse',
-          style: FlutterFlowTheme.of(context).title2.override(
+          style: FlutterFlowTheme.of(context).headlineMedium.override(
                 fontFamily: 'Poppins',
                 color: Colors.white,
                 fontSize: 25.0,
@@ -108,7 +108,7 @@ class _RegistrarseWidgetState extends State<RegistrarseWidget> {
                   obscureText: false,
                   decoration: InputDecoration(
                     hintText: 'Nombre',
-                    hintStyle: FlutterFlowTheme.of(context).bodyText2,
+                    hintStyle: FlutterFlowTheme.of(context).bodySmall,
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
                         color: Color(0xFFFF0000),
@@ -138,7 +138,7 @@ class _RegistrarseWidgetState extends State<RegistrarseWidget> {
                       borderRadius: BorderRadius.circular(40.0),
                     ),
                   ),
-                  style: FlutterFlowTheme.of(context).bodyText1,
+                  style: FlutterFlowTheme.of(context).bodyMedium,
                   validator:
                       _model.txtNombreControllerValidator.asValidator(context),
                 ),
@@ -150,7 +150,7 @@ class _RegistrarseWidgetState extends State<RegistrarseWidget> {
                   obscureText: false,
                   decoration: InputDecoration(
                     hintText: 'Correo electrónico',
-                    hintStyle: FlutterFlowTheme.of(context).bodyText2,
+                    hintStyle: FlutterFlowTheme.of(context).bodySmall,
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
                         color: Color(0xFFFF0000),
@@ -180,7 +180,7 @@ class _RegistrarseWidgetState extends State<RegistrarseWidget> {
                       borderRadius: BorderRadius.circular(40.0),
                     ),
                   ),
-                  style: FlutterFlowTheme.of(context).bodyText1,
+                  style: FlutterFlowTheme.of(context).bodyMedium,
                   validator:
                       _model.txtCorreoControllerValidator.asValidator(context),
                 ),
@@ -192,7 +192,7 @@ class _RegistrarseWidgetState extends State<RegistrarseWidget> {
                   obscureText: !_model.txtContraVisibility,
                   decoration: InputDecoration(
                     hintText: 'Contraseña',
-                    hintStyle: FlutterFlowTheme.of(context).bodyText2,
+                    hintStyle: FlutterFlowTheme.of(context).bodySmall,
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
                         color: Color(0xFFFF0000),
@@ -236,7 +236,7 @@ class _RegistrarseWidgetState extends State<RegistrarseWidget> {
                       ),
                     ),
                   ),
-                  style: FlutterFlowTheme.of(context).bodyText1,
+                  style: FlutterFlowTheme.of(context).bodyMedium,
                   validator:
                       _model.txtContraControllerValidator.asValidator(context),
                 ),
@@ -248,7 +248,7 @@ class _RegistrarseWidgetState extends State<RegistrarseWidget> {
                   obscureText: !_model.txtConfirmarContraVisibility,
                   decoration: InputDecoration(
                     hintText: 'Confirmar contraseña',
-                    hintStyle: FlutterFlowTheme.of(context).bodyText2,
+                    hintStyle: FlutterFlowTheme.of(context).bodySmall,
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
                         color: Color(0xFFFF0000),
@@ -292,7 +292,7 @@ class _RegistrarseWidgetState extends State<RegistrarseWidget> {
                       ),
                     ),
                   ),
-                  style: FlutterFlowTheme.of(context).bodyText1,
+                  style: FlutterFlowTheme.of(context).bodyMedium,
                   validator: _model.txtConfirmarContraControllerValidator
                       .asValidator(context),
                 ),
@@ -337,6 +337,7 @@ class _RegistrarseWidgetState extends State<RegistrarseWidget> {
 
                         await showModalBottomSheet(
                           isScrollControlled: true,
+                          backgroundColor: Colors.white,
                           enableDrag: false,
                           context: context,
                           builder: (context) {
@@ -357,12 +358,13 @@ class _RegistrarseWidgetState extends State<RegistrarseWidget> {
                             EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         iconPadding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        color: FlutterFlowTheme.of(context).primaryColor,
+                        color: FlutterFlowTheme.of(context).primary,
                         textStyle:
-                            FlutterFlowTheme.of(context).subtitle2.override(
+                            FlutterFlowTheme.of(context).titleSmall.override(
                                   fontFamily: 'Poppins',
                                   color: Colors.white,
                                 ),
+                        elevation: 2.0,
                         borderSide: BorderSide(
                           color: Colors.transparent,
                           width: 1.0,

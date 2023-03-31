@@ -44,7 +44,7 @@ class _MiCuentaWidgetState extends State<MiCuentaWidget> {
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
       appBar: AppBar(
-        backgroundColor: FlutterFlowTheme.of(context).primaryColor,
+        backgroundColor: FlutterFlowTheme.of(context).primary,
         automaticallyImplyLeading: false,
         leading: FlutterFlowIconButton(
           borderColor: Colors.transparent,
@@ -62,7 +62,7 @@ class _MiCuentaWidgetState extends State<MiCuentaWidget> {
         ),
         title: Text(
           'Mi Cuenta',
-          style: FlutterFlowTheme.of(context).title2.override(
+          style: FlutterFlowTheme.of(context).headlineMedium.override(
                 fontFamily: 'Poppins',
                 color: Colors.white,
                 fontSize: 22.0,
@@ -88,7 +88,7 @@ class _MiCuentaWidgetState extends State<MiCuentaWidget> {
                           10.0, 10.0, 10.0, 10.0),
                       child: Text(
                         'DATOS PERSONALES',
-                        style: FlutterFlowTheme.of(context).bodyText1.override(
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Poppins',
                               fontSize: 25.0,
                             ),
@@ -120,7 +120,7 @@ class _MiCuentaWidgetState extends State<MiCuentaWidget> {
                           width: 50.0,
                           height: 50.0,
                           child: CircularProgressIndicator(
-                            color: FlutterFlowTheme.of(context).primaryColor,
+                            color: FlutterFlowTheme.of(context).primary,
                           ),
                         ),
                       );
@@ -146,7 +146,7 @@ class _MiCuentaWidgetState extends State<MiCuentaWidget> {
                             children: [
                               Text(
                                 columnUsersRecord!.displayName!,
-                                style: FlutterFlowTheme.of(context).bodyText1,
+                                style: FlutterFlowTheme.of(context).bodyMedium,
                               ),
                             ],
                           ),
@@ -160,7 +160,7 @@ class _MiCuentaWidgetState extends State<MiCuentaWidget> {
                                   0.0, 0.0, 0.0, 15.0),
                               child: Text(
                                 columnUsersRecord!.email!,
-                                style: FlutterFlowTheme.of(context).bodyText1,
+                                style: FlutterFlowTheme.of(context).bodyMedium,
                               ),
                             ),
                           ],
@@ -174,7 +174,7 @@ class _MiCuentaWidgetState extends State<MiCuentaWidget> {
                                   0.0, 0.0, 0.0, 15.0),
                               child: Text(
                                 columnUsersRecord!.phoneNumber!,
-                                style: FlutterFlowTheme.of(context).bodyText1,
+                                style: FlutterFlowTheme.of(context).bodyMedium,
                               ),
                             ),
                           ],
@@ -193,7 +193,7 @@ class _MiCuentaWidgetState extends State<MiCuentaWidget> {
                         EdgeInsetsDirectional.fromSTEB(0.0, 60.0, 0.0, 0.0),
                     child: Text(
                       'Califica tu experiencia en nustra página!',
-                      style: FlutterFlowTheme.of(context).bodyText1,
+                      style: FlutterFlowTheme.of(context).bodyMedium,
                     ),
                   ),
                 ],
@@ -209,14 +209,14 @@ class _MiCuentaWidgetState extends State<MiCuentaWidget> {
                           setState(() => _model.ratingBarValue = newValue),
                       itemBuilder: (context, index) => Icon(
                         Icons.star_rounded,
-                        color: FlutterFlowTheme.of(context).secondaryColor,
+                        color: FlutterFlowTheme.of(context).secondary,
                       ),
                       direction: Axis.horizontal,
                       initialRating: _model.ratingBarValue ??= 3.0,
                       unratedColor: Color(0xFF9E9E9E),
                       itemCount: 5,
                       itemSize: 40.0,
-                      glowColor: FlutterFlowTheme.of(context).secondaryColor,
+                      glowColor: FlutterFlowTheme.of(context).secondary,
                     ),
                   ],
                 ),
@@ -231,7 +231,7 @@ class _MiCuentaWidgetState extends State<MiCuentaWidget> {
                       child: Text(
                         'VER LISTA DE DESEOS',
                         textAlign: TextAlign.center,
-                        style: FlutterFlowTheme.of(context).bodyText1.override(
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Poppins',
                               fontSize: 30.0,
                             ),

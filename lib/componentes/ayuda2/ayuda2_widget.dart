@@ -98,7 +98,7 @@ class _Ayuda2WidgetState extends State<Ayuda2Widget> {
                                     Text(
                                       '¿Cómo solicitar servicio técnico?',
                                       style: FlutterFlowTheme.of(context)
-                                          .title2
+                                          .headlineMedium
                                           .override(
                                             fontFamily: 'Outfit',
                                             color: Color(0xFF101213),
@@ -112,7 +112,7 @@ class _Ayuda2WidgetState extends State<Ayuda2Widget> {
                                       child: Text(
                                         'No te preocupes, estamos acá para ayudarte!',
                                         style: FlutterFlowTheme.of(context)
-                                            .bodyText2
+                                            .bodySmall
                                             .override(
                                               fontFamily: 'Outfit',
                                               color: Color(0xFF57636C),
@@ -146,13 +146,14 @@ class _Ayuda2WidgetState extends State<Ayuda2Widget> {
                               0.0, 8.0, 0.0, 40.0),
                           child: Text(
                             '1. Ingresa al catálogo de la aplicacion.\n2. Selecciona el el tipo de servicio que nececitas.\n3. Verifica que tengas todo lo que nececitas.\n4. En caso de no ver una opcion que se adecue a su necesidad, seleccione \"Solicitar cita con un técnico.\"\n5. Se registrará la solicitud y posterormente nos pondremos en contacto para agendar la visita.',
-                            style:
-                                FlutterFlowTheme.of(context).subtitle2.override(
-                                      fontFamily: 'Outfit',
-                                      color: Colors.black,
-                                      fontSize: 16.0,
-                                      fontWeight: FontWeight.w500,
-                                    ),
+                            style: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .override(
+                                  fontFamily: 'Outfit',
+                                  color: Colors.black,
+                                  fontSize: 16.0,
+                                  fontWeight: FontWeight.w500,
+                                ),
                           ),
                         ),
                       ],

@@ -101,7 +101,7 @@ class _Ayuda1WidgetState extends State<Ayuda1Widget> {
                                     Text(
                                       '¿Cómo puedo realizar mi compra?',
                                       style: FlutterFlowTheme.of(context)
-                                          .title2
+                                          .headlineMedium
                                           .override(
                                             fontFamily: 'Outfit',
                                             color: Color(0xFF101213),
@@ -115,7 +115,7 @@ class _Ayuda1WidgetState extends State<Ayuda1Widget> {
                                       child: Text(
                                         'No te preocupes, estamos acá para ayudarte!',
                                         style: FlutterFlowTheme.of(context)
-                                            .bodyText2
+                                            .bodySmall
                                             .override(
                                               fontFamily: 'Outfit',
                                               color: Color(0xFF57636C),
@@ -149,13 +149,14 @@ class _Ayuda1WidgetState extends State<Ayuda1Widget> {
                               0.0, 8.0, 0.0, 40.0),
                           child: Text(
                             '1. Selecciona el artículo que deseas.\n2. El artículo se ira a el \"carrito\".\n3. Verifice tener todo lo que nececita.\n4. Selecciona el boton \"Comprar\"\n5. El artículo tiene un tiempo estimado de preparación.\n6.Posteriormente tendras de 3 a 5 días para retirar el producto.',
-                            style:
-                                FlutterFlowTheme.of(context).subtitle2.override(
-                                      fontFamily: 'Outfit',
-                                      color: Colors.black,
-                                      fontSize: 16.0,
-                                      fontWeight: FontWeight.w500,
-                                    ),
+                            style: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .override(
+                                  fontFamily: 'Outfit',
+                                  color: Colors.black,
+                                  fontSize: 16.0,
+                                  fontWeight: FontWeight.w500,
+                                ),
                           ),
                         ),
                       ],

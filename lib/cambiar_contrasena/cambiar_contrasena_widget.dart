@@ -47,7 +47,7 @@ class _CambiarContrasenaWidgetState extends State<CambiarContrasenaWidget> {
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
       appBar: AppBar(
-        backgroundColor: FlutterFlowTheme.of(context).primaryColor,
+        backgroundColor: FlutterFlowTheme.of(context).primary,
         automaticallyImplyLeading: false,
         leading: FlutterFlowIconButton(
           borderColor: Colors.transparent,
@@ -65,7 +65,7 @@ class _CambiarContrasenaWidgetState extends State<CambiarContrasenaWidget> {
         ),
         title: Text(
           'Cambiar Contraseña',
-          style: FlutterFlowTheme.of(context).title2.override(
+          style: FlutterFlowTheme.of(context).headlineMedium.override(
                 fontFamily: 'Poppins',
                 color: Colors.white,
                 fontSize: 22.0,
@@ -92,7 +92,7 @@ class _CambiarContrasenaWidgetState extends State<CambiarContrasenaWidget> {
                             0.0, 20.0, 0.0, 20.0),
                         child: Text(
                           'Por favor digitar una nueva contraseña para su cuenta.',
-                          style: FlutterFlowTheme.of(context).bodyText1,
+                          style: FlutterFlowTheme.of(context).bodyMedium,
                         ),
                       ),
                     ),
@@ -111,7 +111,7 @@ class _CambiarContrasenaWidgetState extends State<CambiarContrasenaWidget> {
                           obscureText: false,
                           decoration: InputDecoration(
                             hintText: 'Contraseña',
-                            hintStyle: FlutterFlowTheme.of(context).bodyText2,
+                            hintStyle: FlutterFlowTheme.of(context).bodySmall,
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
                                 color: Color(0xFFFF0000),
@@ -141,7 +141,7 @@ class _CambiarContrasenaWidgetState extends State<CambiarContrasenaWidget> {
                               borderRadius: BorderRadius.circular(40.0),
                             ),
                           ),
-                          style: FlutterFlowTheme.of(context).bodyText1,
+                          style: FlutterFlowTheme.of(context).bodyMedium,
                           validator: _model.txtNuevaCotrasenaControllerValidator
                               .asValidator(context),
                         ),
@@ -163,7 +163,7 @@ class _CambiarContrasenaWidgetState extends State<CambiarContrasenaWidget> {
                           obscureText: false,
                           decoration: InputDecoration(
                             hintText: 'Confirmar Contraseña',
-                            hintStyle: FlutterFlowTheme.of(context).bodyText2,
+                            hintStyle: FlutterFlowTheme.of(context).bodySmall,
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
                                 color: Color(0xFFFF0000),
@@ -193,7 +193,7 @@ class _CambiarContrasenaWidgetState extends State<CambiarContrasenaWidget> {
                               borderRadius: BorderRadius.circular(40.0),
                             ),
                           ),
-                          style: FlutterFlowTheme.of(context).bodyText1,
+                          style: FlutterFlowTheme.of(context).bodyMedium,
                           validator: _model
                               .txtConfirmarNuevaConstrasenaControllerValidator
                               .asValidator(context),
@@ -218,12 +218,13 @@ class _CambiarContrasenaWidgetState extends State<CambiarContrasenaWidget> {
                             EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         iconPadding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        color: FlutterFlowTheme.of(context).primaryColor,
+                        color: FlutterFlowTheme.of(context).primary,
                         textStyle:
-                            FlutterFlowTheme.of(context).subtitle2.override(
+                            FlutterFlowTheme.of(context).titleSmall.override(
                                   fontFamily: 'Poppins',
                                   color: Colors.white,
                                 ),
+                        elevation: 2.0,
                         borderSide: BorderSide(
                           color: Colors.transparent,
                           width: 1.0,

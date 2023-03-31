@@ -79,7 +79,7 @@ class _AyudaWidgetState extends State<AyudaWidget>
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
       appBar: AppBar(
-        backgroundColor: FlutterFlowTheme.of(context).primaryColor,
+        backgroundColor: FlutterFlowTheme.of(context).primary,
         automaticallyImplyLeading: false,
         leading: FlutterFlowIconButton(
           borderColor: Colors.transparent,
@@ -97,7 +97,7 @@ class _AyudaWidgetState extends State<AyudaWidget>
         ),
         title: Text(
           'Ayuda',
-          style: FlutterFlowTheme.of(context).title2.override(
+          style: FlutterFlowTheme.of(context).headlineMedium.override(
                 fontFamily: 'Poppins',
                 color: Colors.white,
                 fontSize: 22.0,
@@ -122,7 +122,7 @@ class _AyudaWidgetState extends State<AyudaWidget>
                         EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 20.0),
                     child: Text(
                       'PREGUNTAS FRECUENTES',
-                      style: FlutterFlowTheme.of(context).bodyText1.override(
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Poppins',
                             fontSize: 25.0,
                             fontWeight: FontWeight.w600,
@@ -139,7 +139,7 @@ class _AyudaWidgetState extends State<AyudaWidget>
                   children: [
                     Text(
                       '¿Necesitas ayuda?',
-                      style: FlutterFlowTheme.of(context).bodyText1.override(
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Poppins',
                             fontSize: 18.0,
                             fontWeight: FontWeight.w600,
@@ -157,7 +157,7 @@ class _AyudaWidgetState extends State<AyudaWidget>
                   children: [
                     Text(
                       '¿Cómo puedo realizar mi compra?',
-                      style: FlutterFlowTheme.of(context).bodyText1,
+                      style: FlutterFlowTheme.of(context).bodyMedium,
                     ),
                     InkWell(
                       onTap: () async {
@@ -197,7 +197,7 @@ class _AyudaWidgetState extends State<AyudaWidget>
                   children: [
                     Text(
                       '¿Cómo solicitar servicio técnico?',
-                      style: FlutterFlowTheme.of(context).bodyText1,
+                      style: FlutterFlowTheme.of(context).bodyMedium,
                     ),
                     InkWell(
                       onTap: () async {
@@ -237,7 +237,7 @@ class _AyudaWidgetState extends State<AyudaWidget>
                   children: [
                     Text(
                       '¿Cuanta garantía tienen los productos?',
-                      style: FlutterFlowTheme.of(context).bodyText1,
+                      style: FlutterFlowTheme.of(context).bodyMedium,
                     ),
                     InkWell(
                       onTap: () async {
@@ -281,7 +281,7 @@ class _AyudaWidgetState extends State<AyudaWidget>
                           EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
                       child: Text(
                         '¿Otra duda? Escribenos directamente!',
-                        style: FlutterFlowTheme.of(context).bodyText1.override(
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Poppins',
                               fontSize: 18.0,
                               fontWeight: FontWeight.w600,
@@ -300,7 +300,7 @@ class _AyudaWidgetState extends State<AyudaWidget>
                   obscureText: false,
                   decoration: InputDecoration(
                     hintText: 'Escribe aquí tu consulta',
-                    hintStyle: FlutterFlowTheme.of(context).bodyText2,
+                    hintStyle: FlutterFlowTheme.of(context).bodySmall,
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
                         color: Color(0xFFCE1C1F),
@@ -342,7 +342,7 @@ class _AyudaWidgetState extends State<AyudaWidget>
                       ),
                     ),
                   ),
-                  style: FlutterFlowTheme.of(context).bodyText1,
+                  style: FlutterFlowTheme.of(context).bodyMedium,
                   textAlign: TextAlign.center,
                   maxLines: 5,
                   validator: _model.txtconsultasControllerValidator
@@ -360,11 +360,12 @@ class _AyudaWidgetState extends State<AyudaWidget>
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                   iconPadding:
                       EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                  color: FlutterFlowTheme.of(context).primaryColor,
-                  textStyle: FlutterFlowTheme.of(context).subtitle2.override(
+                  color: FlutterFlowTheme.of(context).primary,
+                  textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                         fontFamily: 'Poppins',
                         color: Colors.white,
                       ),
+                  elevation: 2.0,
                   borderSide: BorderSide(
                     color: Colors.transparent,
                     width: 1.0,

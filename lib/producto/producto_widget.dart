@@ -157,7 +157,7 @@ class _ProductoWidgetState extends State<ProductoWidget>
               width: 50.0,
               height: 50.0,
               child: CircularProgressIndicator(
-                color: FlutterFlowTheme.of(context).primaryColor,
+                color: FlutterFlowTheme.of(context).primary,
               ),
             ),
           );
@@ -174,7 +174,7 @@ class _ProductoWidgetState extends State<ProductoWidget>
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
           appBar: AppBar(
-            backgroundColor: FlutterFlowTheme.of(context).primaryColor,
+            backgroundColor: FlutterFlowTheme.of(context).primary,
             automaticallyImplyLeading: false,
             leading: FlutterFlowIconButton(
               borderColor: Colors.transparent,
@@ -192,7 +192,7 @@ class _ProductoWidgetState extends State<ProductoWidget>
             ),
             title: Text(
               widget.pNombre!,
-              style: FlutterFlowTheme.of(context).title2.override(
+              style: FlutterFlowTheme.of(context).headlineMedium.override(
                     fontFamily: 'Poppins',
                     color: Colors.white,
                     fontSize: 22.0,
@@ -244,7 +244,7 @@ class _ProductoWidgetState extends State<ProductoWidget>
                                     'o',
                                   ),
                                   style: FlutterFlowTheme.of(context)
-                                      .bodyText1
+                                      .bodyMedium
                                       .override(
                                         fontFamily: 'Poppins',
                                         fontSize: 20.0,
@@ -269,7 +269,7 @@ class _ProductoWidgetState extends State<ProductoWidget>
                                     'o',
                                   ),
                                   style: FlutterFlowTheme.of(context)
-                                      .bodyText1
+                                      .bodyMedium
                                       .override(
                                         fontFamily: 'Poppins',
                                         fontSize: 14.0,
@@ -310,7 +310,7 @@ class _ProductoWidgetState extends State<ProductoWidget>
                                       )
                                     ],
                                     style:
-                                        FlutterFlowTheme.of(context).bodyText1,
+                                        FlutterFlowTheme.of(context).bodyMedium,
                                   ),
                                 ).animateOnPageLoad(animationsMap[
                                     'richTextOnPageLoadAnimation']!),
@@ -359,7 +359,7 @@ class _ProductoWidgetState extends State<ProductoWidget>
                                                     'Agregado al carrito',
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .subtitle1
+                                                        .titleMedium
                                                         .override(
                                                           fontFamily: 'Poppins',
                                                           color: FlutterFlowTheme
@@ -375,7 +375,7 @@ class _ProductoWidgetState extends State<ProductoWidget>
                                                   backgroundColor:
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .primaryColor,
+                                                          .primary,
                                                   action: SnackBarAction(
                                                     label: 'Ir al carrito',
                                                     textColor:
@@ -408,7 +408,7 @@ class _ProductoWidgetState extends State<ProductoWidget>
                                                 gradient: LinearGradient(
                                                   colors: [
                                                     FlutterFlowTheme.of(context)
-                                                        .primaryColor,
+                                                        .primary,
                                                     Color(0xFF608DEE)
                                                   ],
                                                   stops: [0.0, 1.0],
@@ -443,7 +443,7 @@ class _ProductoWidgetState extends State<ProductoWidget>
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .bodyText1
+                                                              .bodyMedium
                                                               .override(
                                                                 fontFamily:
                                                                     'Poppins',
@@ -526,7 +526,7 @@ class _ProductoWidgetState extends State<ProductoWidget>
                                     child: Icon(
                                       Icons.favorite_rounded,
                                       color: FlutterFlowTheme.of(context)
-                                          .secondaryColor,
+                                          .secondary,
                                       size: 34.0,
                                     ),
                                   ).animateOnActionTrigger(

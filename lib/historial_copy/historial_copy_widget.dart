@@ -12,11 +12,11 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'carrito_model.dart';
-export 'carrito_model.dart';
+import 'historial_copy_model.dart';
+export 'historial_copy_model.dart';
 
-class CarritoWidget extends StatefulWidget {
-  const CarritoWidget({
+class HistorialCopyWidget extends StatefulWidget {
+  const HistorialCopyWidget({
     Key? key,
     this.productosRef,
   }) : super(key: key);
@@ -24,12 +24,12 @@ class CarritoWidget extends StatefulWidget {
   final DocumentReference? productosRef;
 
   @override
-  _CarritoWidgetState createState() => _CarritoWidgetState();
+  _HistorialCopyWidgetState createState() => _HistorialCopyWidgetState();
 }
 
-class _CarritoWidgetState extends State<CarritoWidget>
+class _HistorialCopyWidgetState extends State<HistorialCopyWidget>
     with TickerProviderStateMixin {
-  late CarritoModel _model;
+  late HistorialCopyModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final _unfocusNode = FocusNode();
@@ -52,7 +52,7 @@ class _CarritoWidgetState extends State<CarritoWidget>
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => CarritoModel());
+    _model = createModel(context, () => HistorialCopyModel());
   }
 
   @override
@@ -141,20 +141,20 @@ class _CarritoWidgetState extends State<CarritoWidget>
                   ),
                   Builder(
                     builder: (context) {
-                      final carrito = FFAppState().carrito.toList();
+                      final compras = FFAppState().compra.toList();
                       return SingleChildScrollView(
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           children:
-                              List.generate(carrito.length, (carritoIndex) {
-                            final carritoItem = carrito[carritoIndex];
+                              List.generate(compras.length, (comprasIndex) {
+                            final comprasItem = compras[comprasIndex];
                             return Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Expanded(
                                   child: StreamBuilder<ProductosRecord>(
                                     stream: ProductosRecord.getDocument(
-                                        carritoItem),
+                                        comprasItem),
                                     builder: (context, snapshot) {
                                       // Customize what your widget looks like when it's loading.
                                       if (!snapshot.hasData) {
@@ -417,7 +417,51 @@ class _CarritoWidgetState extends State<CarritoWidget>
                       ),
                       InkWell(
                         onTap: () async {
-                          context.pushNamed('pago');
+                          setState(() {
+                            FFAppState().addToCompra(widget.productosRef!);
+                          });
+                          setState(() {
+                            FFAppState()
+                                .removeFromCarrito(widget.productosRef!);
+                            FFAppState().carritoSum = 0.0;
+                          });
+                          ScaffoldMessenger.of(context).clearSnackBars();
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(
+                                'Finalizo compra',
+                                style: FlutterFlowTheme.of(context)
+                                    .titleMedium
+                                    .override(
+                                      fontFamily: 'Poppins',
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryBtnText,
+                                      fontSize: 18.0,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                              ),
+                              duration: Duration(milliseconds: 4050),
+                              backgroundColor:
+                                  FlutterFlowTheme.of(context).primary,
+                              action: SnackBarAction(
+                                label: 'Historial de compras',
+                                textColor:
+                                    FlutterFlowTheme.of(context).lineColor,
+                                onPressed: () async {
+                                  context.pushNamed(
+                                    'HistorialCopy',
+                                    extra: <String, dynamic>{
+                                      kTransitionInfoKey: TransitionInfo(
+                                        hasTransition: true,
+                                        transitionType:
+                                            PageTransitionType.bottomToTop,
+                                      ),
+                                    },
+                                  );
+                                },
+                              ),
+                            ),
+                          );
                         },
                         child: Container(
                           width: MediaQuery.of(context).size.width * 0.43,
@@ -431,43 +475,29 @@ class _CarritoWidgetState extends State<CarritoWidget>
                               topRight: Radius.circular(0.0),
                             ),
                           ),
-                          child: InkWell(
-                            onTap: () async {
-                              context.pushNamed(
-                                'pago',
-                                queryParams: {
-                                  'carritoLista': serializeParam(
-                                    widget.productosRef,
-                                    ParamType.DocumentReference,
-                                  ),
-                                }.withoutNulls,
-                              );
-                            },
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      15.0, 10.0, 0.0, 0.0),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Text(
-                                        'Finalizar compra ',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Poppins',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryBtnText,
-                                            ),
-                                      ),
-                                    ],
-                                  ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    15.0, 10.0, 0.0, 0.0),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Text(
+                                      'Finalizar compra ',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Poppins',
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryBtnText,
+                                          ),
+                                    ),
+                                  ],
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                         ),
                       ),

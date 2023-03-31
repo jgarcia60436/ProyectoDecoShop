@@ -101,7 +101,7 @@ class _ContraWidgetState extends State<ContraWidget> {
                                     Text(
                                       'Se envio exitosamente',
                                       style: FlutterFlowTheme.of(context)
-                                          .title2
+                                          .headlineMedium
                                           .override(
                                             fontFamily: 'Outfit',
                                             color: Color(0xFF101213),
@@ -136,13 +136,14 @@ class _ContraWidgetState extends State<ContraWidget> {
                               0.0, 8.0, 0.0, 40.0),
                           child: Text(
                             'Revisa tu correo electronico y sigue los pasos para poder restablecer tu contraseña',
-                            style:
-                                FlutterFlowTheme.of(context).subtitle2.override(
-                                      fontFamily: 'Outfit',
-                                      color: Colors.black,
-                                      fontSize: 16.0,
-                                      fontWeight: FontWeight.w500,
-                                    ),
+                            style: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .override(
+                                  fontFamily: 'Outfit',
+                                  color: Colors.black,
+                                  fontSize: 16.0,
+                                  fontWeight: FontWeight.w500,
+                                ),
                           ),
                         ),
                       ],

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'backend/backend.dart';
+import 'backend/api_requests/api_manager.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 
@@ -20,12 +21,12 @@ class FFAppState extends ChangeNotifier {
         prefs.getStringList('ff_carrito')?.map((path) => path.ref).toList() ??
             _carrito;
     _carritoSum = prefs.getDouble('ff_carritoSum') ?? _carritoSum;
-    _favorite =
-        prefs.getStringList('ff_favorite')?.map((path) => path.ref).toList() ??
-            _favorite;
     _favoritos =
         prefs.getStringList('ff_favoritos')?.map((path) => path.ref).toList() ??
             _favoritos;
+    _compra =
+        prefs.getStringList('ff_compra')?.map((path) => path.ref).toList() ??
+            _compra;
   }
 
   void update(VoidCallback callback) {
@@ -76,28 +77,6 @@ class FFAppState extends ChangeNotifier {
     _isLike = _value;
   }
 
-  List<DocumentReference> _favorite = [];
-  List<DocumentReference> get favorite => _favorite;
-  set favorite(List<DocumentReference> _value) {
-    _favorite = _value;
-    prefs.setStringList('ff_favorite', _value.map((x) => x.path).toList());
-  }
-
-  void addToFavorite(DocumentReference _value) {
-    _favorite.add(_value);
-    prefs.setStringList('ff_favorite', _favorite.map((x) => x.path).toList());
-  }
-
-  void removeFromFavorite(DocumentReference _value) {
-    _favorite.remove(_value);
-    prefs.setStringList('ff_favorite', _favorite.map((x) => x.path).toList());
-  }
-
-  void removeAtIndexFromFavorite(int _index) {
-    _favorite.removeAt(_index);
-    prefs.setStringList('ff_favorite', _favorite.map((x) => x.path).toList());
-  }
-
   List<DocumentReference> _favoritos = [];
   List<DocumentReference> get favoritos => _favoritos;
   set favoritos(List<DocumentReference> _value) {
@@ -124,6 +103,28 @@ class FFAppState extends ChangeNotifier {
   bool get corazon => _corazon;
   set corazon(bool _value) {
     _corazon = _value;
+  }
+
+  List<DocumentReference> _compra = [];
+  List<DocumentReference> get compra => _compra;
+  set compra(List<DocumentReference> _value) {
+    _compra = _value;
+    prefs.setStringList('ff_compra', _value.map((x) => x.path).toList());
+  }
+
+  void addToCompra(DocumentReference _value) {
+    _compra.add(_value);
+    prefs.setStringList('ff_compra', _compra.map((x) => x.path).toList());
+  }
+
+  void removeFromCompra(DocumentReference _value) {
+    _compra.remove(_value);
+    prefs.setStringList('ff_compra', _compra.map((x) => x.path).toList());
+  }
+
+  void removeAtIndexFromCompra(int _index) {
+    _compra.removeAt(_index);
+    prefs.setStringList('ff_compra', _compra.map((x) => x.path).toList());
   }
 }
 

@@ -43,7 +43,7 @@ class _HomeWidgetState extends State<HomeWidget> {
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
       appBar: AppBar(
-        backgroundColor: FlutterFlowTheme.of(context).primaryColor,
+        backgroundColor: FlutterFlowTheme.of(context).primary,
         automaticallyImplyLeading: false,
         leading: FlutterFlowIconButton(
           borderColor: Colors.transparent,
@@ -61,7 +61,7 @@ class _HomeWidgetState extends State<HomeWidget> {
         ),
         title: Text(
           'Inicio',
-          style: FlutterFlowTheme.of(context).title2.override(
+          style: FlutterFlowTheme.of(context).headlineMedium.override(
                 fontFamily: 'Poppins',
                 color: Colors.white,
                 fontSize: 22.0,
@@ -86,7 +86,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                     children: [
                       Text(
                         'Productos',
-                        style: FlutterFlowTheme.of(context).bodyText1,
+                        style: FlutterFlowTheme.of(context).bodyMedium,
                       ),
                       Padding(
                         padding:
@@ -112,7 +112,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                             width: 50.0,
                             height: 50.0,
                             child: CircularProgressIndicator(
-                              color: FlutterFlowTheme.of(context).primaryColor,
+                              color: FlutterFlowTheme.of(context).primary,
                             ),
                           ),
                         );
@@ -166,7 +166,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                             rowProductosRecord.nombre!,
                                             textAlign: TextAlign.center,
                                             style: FlutterFlowTheme.of(context)
-                                                .bodyText1,
+                                                .bodyMedium,
                                           ),
                                         ),
                                       ],
@@ -188,7 +188,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                     children: [
                       Text(
                         'Ofertas',
-                        style: FlutterFlowTheme.of(context).bodyText1,
+                        style: FlutterFlowTheme.of(context).bodyMedium,
                       ),
                       Padding(
                         padding:
@@ -217,7 +217,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                             width: 50.0,
                             height: 50.0,
                             child: CircularProgressIndicator(
-                              color: FlutterFlowTheme.of(context).primaryColor,
+                              color: FlutterFlowTheme.of(context).primary,
                             ),
                           ),
                         );
@@ -271,7 +271,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                             rowProductosRecord.nombre!,
                                             textAlign: TextAlign.center,
                                             style: FlutterFlowTheme.of(context)
-                                                .bodyText1,
+                                                .bodyMedium,
                                           ),
                                         ),
                                       ],
@@ -293,7 +293,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                     children: [
                       Text(
                         'Servicios de instalación',
-                        style: FlutterFlowTheme.of(context).bodyText1,
+                        style: FlutterFlowTheme.of(context).bodyMedium,
                       ),
                       Padding(
                         padding:
@@ -319,7 +319,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                             width: 50.0,
                             height: 50.0,
                             child: CircularProgressIndicator(
-                              color: FlutterFlowTheme.of(context).primaryColor,
+                              color: FlutterFlowTheme.of(context).primary,
                             ),
                           ),
                         );
@@ -373,7 +373,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                             rowServiciosRecord.nombre!,
                                             textAlign: TextAlign.center,
                                             style: FlutterFlowTheme.of(context)
-                                                .bodyText1,
+                                                .bodyMedium,
                                           ),
                                         ),
                                       ],
