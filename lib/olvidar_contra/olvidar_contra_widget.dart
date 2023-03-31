@@ -48,7 +48,7 @@ class _OlvidarContraWidgetState extends State<OlvidarContraWidget> {
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
       appBar: AppBar(
-        backgroundColor: FlutterFlowTheme.of(context).primaryColor,
+        backgroundColor: FlutterFlowTheme.of(context).primary,
         automaticallyImplyLeading: false,
         leading: FlutterFlowIconButton(
           borderColor: Colors.transparent,
@@ -67,7 +67,7 @@ class _OlvidarContraWidgetState extends State<OlvidarContraWidget> {
         title: Text(
           'Recuperar contraseña',
           textAlign: TextAlign.center,
-          style: FlutterFlowTheme.of(context).title2.override(
+          style: FlutterFlowTheme.of(context).headlineMedium.override(
                 fontFamily: 'Poppins',
                 color: Colors.white,
                 fontSize: 22.0,
@@ -94,7 +94,7 @@ class _OlvidarContraWidgetState extends State<OlvidarContraWidget> {
                       child: Text(
                         'Por favor escribe el correo electronico asociado a tu cuenta para recibir un email con las instruciones para restablecer tu contraseña:',
                         textAlign: TextAlign.center,
-                        style: FlutterFlowTheme.of(context).bodyText1.override(
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Poppins',
                               fontSize: 18.0,
                             ),
@@ -117,7 +117,7 @@ class _OlvidarContraWidgetState extends State<OlvidarContraWidget> {
                           obscureText: false,
                           decoration: InputDecoration(
                             hintText: 'Correo electronico',
-                            hintStyle: FlutterFlowTheme.of(context).bodyText2,
+                            hintStyle: FlutterFlowTheme.of(context).bodySmall,
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
                                 color: Color(0xFFFF0000),
@@ -147,7 +147,7 @@ class _OlvidarContraWidgetState extends State<OlvidarContraWidget> {
                               borderRadius: BorderRadius.circular(40.0),
                             ),
                           ),
-                          style: FlutterFlowTheme.of(context).bodyText1,
+                          style: FlutterFlowTheme.of(context).bodyMedium,
                           validator: _model.txtCorreoContraControllerValidator
                               .asValidator(context),
                         ),
@@ -180,6 +180,7 @@ class _OlvidarContraWidgetState extends State<OlvidarContraWidget> {
                         );
                         await showModalBottomSheet(
                           isScrollControlled: true,
+                          backgroundColor: Colors.white,
                           enableDrag: false,
                           context: context,
                           builder: (context) {
@@ -198,12 +199,13 @@ class _OlvidarContraWidgetState extends State<OlvidarContraWidget> {
                             EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         iconPadding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        color: FlutterFlowTheme.of(context).primaryColor,
+                        color: FlutterFlowTheme.of(context).primary,
                         textStyle:
-                            FlutterFlowTheme.of(context).subtitle2.override(
+                            FlutterFlowTheme.of(context).titleSmall.override(
                                   fontFamily: 'Poppins',
                                   color: Colors.white,
                                 ),
+                        elevation: 2.0,
                         borderSide: BorderSide(
                           color: Colors.transparent,
                           width: 1.0,
@@ -232,7 +234,8 @@ class _OlvidarContraWidgetState extends State<OlvidarContraWidget> {
                               Expanded(
                                 child: Text(
                                   'A continuacion te dejamos un pequeño tutorial que te muestra como cambiar tu contraseña:',
-                                  style: FlutterFlowTheme.of(context).bodyText1,
+                                  style:
+                                      FlutterFlowTheme.of(context).bodyMedium,
                                 ),
                               ),
                             ],

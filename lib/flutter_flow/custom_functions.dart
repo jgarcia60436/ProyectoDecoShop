@@ -14,3 +14,12 @@ import '../../auth/auth_util.dart';
 double quitarProducto(double value) {
   return value * -1;
 }
+
+double dolarizacion(
+  double precioTotal,
+  double tipoCambio,
+) {
+  double total = precioTotal / tipoCambio;
+
+  return double.parse(total.toStringAsFixed(2));
+}

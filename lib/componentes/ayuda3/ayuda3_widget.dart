@@ -98,7 +98,7 @@ class _Ayuda3WidgetState extends State<Ayuda3Widget> {
                                     Text(
                                       '¿Cuanta garantía tienen los productos?',
                                       style: FlutterFlowTheme.of(context)
-                                          .title2
+                                          .headlineMedium
                                           .override(
                                             fontFamily: 'Outfit',
                                             color: Color(0xFF101213),
@@ -112,7 +112,7 @@ class _Ayuda3WidgetState extends State<Ayuda3Widget> {
                                       child: Text(
                                         'No te preocupes, estamos acá para ayudarte!',
                                         style: FlutterFlowTheme.of(context)
-                                            .bodyText2
+                                            .bodySmall
                                             .override(
                                               fontFamily: 'Outfit',
                                               color: Color(0xFF57636C),
@@ -146,13 +146,14 @@ class _Ayuda3WidgetState extends State<Ayuda3Widget> {
                               0.0, 8.0, 0.0, 40.0),
                           child: Text(
                             '1. Racks, canastas, o rieles, tienen garantía de 6 meses ante defectos de fábrica.\n2.Radios o pantallas, su gatantía es de 1 año ante defectos de fpabrica.\n3. El polarizado tiene garantía ded 1 mes ante cualquier defecto de instalación.\n4. Las instalaciones tienen garantía de 1 mes ante cualquier defecto de aplicación.',
-                            style:
-                                FlutterFlowTheme.of(context).subtitle2.override(
-                                      fontFamily: 'Outfit',
-                                      color: Colors.black,
-                                      fontSize: 16.0,
-                                      fontWeight: FontWeight.w500,
-                                    ),
+                            style: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .override(
+                                  fontFamily: 'Outfit',
+                                  color: Colors.black,
+                                  fontSize: 16.0,
+                                  fontWeight: FontWeight.w500,
+                                ),
                           ),
                         ),
                       ],

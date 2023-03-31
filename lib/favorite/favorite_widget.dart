@@ -43,7 +43,7 @@ class _FavoriteWidgetState extends State<FavoriteWidget> {
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
       appBar: AppBar(
-        backgroundColor: FlutterFlowTheme.of(context).primaryColor,
+        backgroundColor: FlutterFlowTheme.of(context).primary,
         automaticallyImplyLeading: false,
         leading: FlutterFlowIconButton(
           borderColor: Colors.transparent,
@@ -61,7 +61,7 @@ class _FavoriteWidgetState extends State<FavoriteWidget> {
         ),
         title: Text(
           'PRODUCTOS FAVORITOS',
-          style: FlutterFlowTheme.of(context).title2.override(
+          style: FlutterFlowTheme.of(context).headlineMedium.override(
                 fontFamily: 'Poppins',
                 color: Colors.white,
                 fontSize: 22.0,
@@ -105,7 +105,7 @@ class _FavoriteWidgetState extends State<FavoriteWidget> {
                                         height: 50.0,
                                         child: CircularProgressIndicator(
                                           color: FlutterFlowTheme.of(context)
-                                              .primaryColor,
+                                              .primary,
                                         ),
                                       ),
                                     );
@@ -154,7 +154,7 @@ class _FavoriteWidgetState extends State<FavoriteWidget> {
                                                               .nombre!,
                                                           style: FlutterFlowTheme
                                                                   .of(context)
-                                                              .bodyText1,
+                                                              .bodyMedium,
                                                         ),
                                                       ),
                                                     ],
@@ -170,7 +170,7 @@ class _FavoriteWidgetState extends State<FavoriteWidget> {
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .bodyText1,
+                                                                .bodyMedium,
                                                       ),
                                                     ],
                                                   ),
@@ -196,6 +196,9 @@ class _FavoriteWidgetState extends State<FavoriteWidget> {
                                                     });
                                                     ScaffoldMessenger.of(
                                                             context)
+                                                        .clearSnackBars();
+                                                    ScaffoldMessenger.of(
+                                                            context)
                                                         .showSnackBar(
                                                       SnackBar(
                                                         content: Text(
@@ -211,7 +214,7 @@ class _FavoriteWidgetState extends State<FavoriteWidget> {
                                                         backgroundColor:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .secondaryColor,
+                                                                .secondary,
                                                       ),
                                                     );
                                                   },
@@ -232,6 +235,11 @@ class _FavoriteWidgetState extends State<FavoriteWidget> {
                                                               cardProductosRecord
                                                                   .precio!;
                                                     });
+                                                    setState(() {
+                                                      FFAppState()
+                                                          .removeFromFavoritos(
+                                                              favoriteItem);
+                                                    });
                                                     ScaffoldMessenger.of(
                                                             context)
                                                         .clearSnackBars();
@@ -244,18 +252,20 @@ class _FavoriteWidgetState extends State<FavoriteWidget> {
                                                           style: TextStyle(
                                                             color: FlutterFlowTheme
                                                                     .of(context)
-                                                                .primaryText,
+                                                                .primaryBtnText,
                                                           ),
                                                         ),
                                                         duration: Duration(
                                                             milliseconds: 2000),
                                                         backgroundColor:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .secondaryColor,
+                                                            Color(0xFF4B39EF),
                                                         action: SnackBarAction(
                                                           label:
                                                               'Ir al carrito de compras',
+                                                          textColor:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .primaryBtnText,
                                                           onPressed: () async {
                                                             context.pushNamed(
                                                                 'Carrito');
@@ -263,11 +273,6 @@ class _FavoriteWidgetState extends State<FavoriteWidget> {
                                                         ),
                                                       ),
                                                     );
-                                                    setState(() {
-                                                      FFAppState()
-                                                          .removeFromFavoritos(
-                                                              favoriteItem);
-                                                    });
                                                   },
                                                   child: Icon(
                                                     Icons.shopping_cart,

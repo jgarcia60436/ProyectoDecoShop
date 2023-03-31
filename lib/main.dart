@@ -129,9 +129,9 @@ class _NavBarPageState extends State<NavBarPage> {
     final tabs = {
       'Home': HomeWidget(),
       'Carrito': CarritoWidget(),
-      'Catalogo': CatalogoWidget(),
       'MiCuenta': MiCuentaWidget(),
       'Ayuda': AyudaWidget(),
+      'Catalogo': CatalogoWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
     return Scaffold(
@@ -199,12 +199,12 @@ class _NavBarPageState extends State<NavBarPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(
-                  FontAwesomeIcons.shoppingBasket,
+                  Icons.person_rounded,
                   color: currentIndex == 2 ? Colors.white : Color(0xFF608DEE),
                   size: 24.0,
                 ),
                 Text(
-                  'Catalogo',
+                  'Perfil',
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     color: currentIndex == 2 ? Colors.white : Color(0xFF608DEE),
@@ -219,12 +219,12 @@ class _NavBarPageState extends State<NavBarPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(
-                  Icons.person_rounded,
+                  Icons.help_outline_rounded,
                   color: currentIndex == 3 ? Colors.white : Color(0xFF608DEE),
                   size: 24.0,
                 ),
                 Text(
-                  'Perfil',
+                  'Ayuda',
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     color: currentIndex == 3 ? Colors.white : Color(0xFF608DEE),
@@ -239,12 +239,12 @@ class _NavBarPageState extends State<NavBarPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(
-                  Icons.help_outline_rounded,
+                  FontAwesomeIcons.shoppingBasket,
                   color: currentIndex == 4 ? Colors.white : Color(0xFF608DEE),
                   size: 24.0,
                 ),
                 Text(
-                  'Ayuda',
+                  'Catalogo',
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     color: currentIndex == 4 ? Colors.white : Color(0xFF608DEE),

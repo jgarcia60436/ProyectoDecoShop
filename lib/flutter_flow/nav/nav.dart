@@ -101,7 +101,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   ? NavBarPage(initialPage: 'Carrito')
                   : NavBarPage(
                       initialPage: 'Carrito',
-                      page: CarritoWidget(),
+                      page: CarritoWidget(
+                        productosRef: params.getParam('productosRef',
+                            ParamType.DocumentReference, false, ['productos']),
+                      ),
                     ),
             ),
             FFRoute(
@@ -172,6 +175,25 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'CambiarContrasena',
               path: 'cambiarContrasena',
               builder: (context, params) => CambiarContrasenaWidget(),
+            ),
+            FFRoute(
+              name: 'HistorialCopy',
+              path: 'historialCopy',
+              builder: (context, params) => NavBarPage(
+                initialPage: '',
+                page: HistorialCopyWidget(
+                  productosRef: params.getParam('productosRef',
+                      ParamType.DocumentReference, false, ['productos']),
+                ),
+              ),
+            ),
+            FFRoute(
+              name: 'pago',
+              path: 'pago',
+              builder: (context, params) => PagoWidget(
+                carritoLista: params.getParam('carritoLista',
+                    ParamType.DocumentReference, false, ['productos']),
+              ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
@@ -360,7 +382,7 @@ class FFRoute {
                     width: 50.0,
                     height: 50.0,
                     child: CircularProgressIndicator(
-                      color: FlutterFlowTheme.of(context).primaryColor,
+                      color: FlutterFlowTheme.of(context).primary,
                     ),
                   ),
                 )

@@ -12,3 +12,5 @@ export '/olvidar_contra/olvidar_contra_widget.dart' show OlvidarContraWidget;
 export '/favorite/favorite_widget.dart' show FavoriteWidget;
 export '/cambiar_contrasena/cambiar_contrasena_widget.dart'
     show CambiarContrasenaWidget;
+export '/historial_copy/historial_copy_widget.dart' show HistorialCopyWidget;
+export '/pago/pago_widget.dart' show PagoWidget;

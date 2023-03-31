@@ -101,7 +101,7 @@ class _RegistroWidgetState extends State<RegistroWidget> {
                                     Text(
                                       'Registro Exitoso',
                                       style: FlutterFlowTheme.of(context)
-                                          .title2
+                                          .headlineMedium
                                           .override(
                                             fontFamily: 'Outfit',
                                             color: Color(0xFF101213),
@@ -136,13 +136,14 @@ class _RegistroWidgetState extends State<RegistroWidget> {
                               0.0, 8.0, 0.0, 40.0),
                           child: Text(
                             'Su usuario se ha registrado exitosamente en el sistema. Esperamos disfrute de DecoShopCR online!',
-                            style:
-                                FlutterFlowTheme.of(context).subtitle2.override(
-                                      fontFamily: 'Outfit',
-                                      color: Colors.black,
-                                      fontSize: 16.0,
-                                      fontWeight: FontWeight.w500,
-                                    ),
+                            style: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .override(
+                                  fontFamily: 'Outfit',
+                                  color: Colors.black,
+                                  fontSize: 16.0,
+                                  fontWeight: FontWeight.w500,
+                                ),
                           ),
                         ),
                       ],

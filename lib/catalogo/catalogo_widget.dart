@@ -105,7 +105,7 @@ class _CatalogoWidgetState extends State<CatalogoWidget>
                             obscureText: false,
                             decoration: InputDecoration(
                               hintText: 'Buscar Productos',
-                              hintStyle: FlutterFlowTheme.of(context).bodyText2,
+                              hintStyle: FlutterFlowTheme.of(context).bodySmall,
                               enabledBorder: UnderlineInputBorder(
                                 borderSide: BorderSide(
                                   color: Color(0x00000000),
@@ -147,7 +147,7 @@ class _CatalogoWidgetState extends State<CatalogoWidget>
                                 ),
                               ),
                             ),
-                            style: FlutterFlowTheme.of(context).bodyText1,
+                            style: FlutterFlowTheme.of(context).bodyMedium,
                             validator: _model.textControllerValidator
                                 .asValidator(context),
                           ),
@@ -180,8 +180,8 @@ class _CatalogoWidgetState extends State<CatalogoWidget>
                                     width: 50.0,
                                     height: 50.0,
                                     child: CircularProgressIndicator(
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryColor,
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
                                     ),
                                   ),
                                 );
@@ -240,7 +240,7 @@ class _CatalogoWidgetState extends State<CatalogoWidget>
                                                     colors: [
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .primaryColor,
+                                                          .primary,
                                                       Color(0xFF3995EF)
                                                     ],
                                                     stops: [0.0, 1.0],
@@ -368,7 +368,7 @@ class _CatalogoWidgetState extends State<CatalogoWidget>
                                                                         .nombre!,
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .bodyText1
+                                                                        .bodyMedium
                                                                         .override(
                                                                           fontFamily:
                                                                               'Poppins',
@@ -422,7 +422,7 @@ class _CatalogoWidgetState extends State<CatalogoWidget>
                                                                     ],
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .bodyText1,
+                                                                        .bodyMedium,
                                                                   ),
                                                                 ),
                                                               ],
