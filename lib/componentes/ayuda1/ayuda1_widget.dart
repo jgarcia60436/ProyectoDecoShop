@@ -61,6 +61,7 @@ class _Ayuda1WidgetState extends State<Ayuda1Widget> {
               Align(
                 alignment: AlignmentDirectional(0.0, 0.0),
                 child: Container(
+                  height: 450.0,
                   constraints: BoxConstraints(
                     maxWidth: 500.0,
                   ),
@@ -96,7 +97,7 @@ class _Ayuda1WidgetState extends State<Ayuda1Widget> {
                               Expanded(
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     Text(
                                       '¿Cómo puedo realizar mi compra?',
@@ -111,7 +112,7 @@ class _Ayuda1WidgetState extends State<Ayuda1Widget> {
                                     ),
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 8.0, 0.0, 0.0),
+                                          0.0, 18.0, 0.0, 0.0),
                                       child: Text(
                                         'No te preocupes, estamos acá para ayudarte!',
                                         style: FlutterFlowTheme.of(context)
@@ -146,9 +147,9 @@ class _Ayuda1WidgetState extends State<Ayuda1Widget> {
                         ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 8.0, 0.0, 40.0),
+                              0.0, 28.0, 0.0, 40.0),
                           child: Text(
-                            '1. Selecciona el artículo que deseas.\n2. El artículo se ira a el \"carrito\".\n3. Verifice tener todo lo que nececita.\n4. Selecciona el boton \"Comprar\"\n5. El artículo tiene un tiempo estimado de preparación.\n6.Posteriormente tendras de 3 a 5 días para retirar el producto.',
+                            '1. Selecciona el artículo que deseas.\n\n2. El artículo se ira a el \"carrito\".\n\n3. Verifice tener todo lo que nececita.\n\n4. Selecciona el boton \"Comprar\"\n\n5. El artículo tiene un tiempo estimado de preparación.\n\n6.Posteriormente tendras de 3 a 5 días para retirar el producto.',
                             style: FlutterFlowTheme.of(context)
                                 .titleSmall
                                 .override(

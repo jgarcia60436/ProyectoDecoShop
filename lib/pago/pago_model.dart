@@ -1,5 +1,5 @@
 import '/backend/api_requests/api_calls.dart';
-import '/components/bs_pago_widget.dart';
+import '/componentes/bs_pago/bs_pago_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';

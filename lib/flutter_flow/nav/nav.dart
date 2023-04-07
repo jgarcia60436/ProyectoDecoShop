@@ -137,11 +137,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                       params.getParam('pDescripcion', ParamType.String),
                   pPrecio: params.getParam('pPrecio', ParamType.double),
                   pImagen: params.getParam('pImagen', ParamType.String),
-                  pReferenciaGustados: params.getParam(
-                      'pReferenciaGustados',
-                      ParamType.DocumentReference,
-                      false,
-                      ['Productos_gustados']),
                 ),
               ),
             ),
@@ -159,7 +154,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'Historial',
               path: 'historial',
-              builder: (context, params) => HistorialWidget(),
+              builder: (context, params) => NavBarPage(
+                initialPage: '',
+                page: HistorialWidget(),
+              ),
             ),
             FFRoute(
               name: 'OlvidarContra',
@@ -169,7 +167,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'Favorite',
               path: 'favorite',
-              builder: (context, params) => FavoriteWidget(),
+              builder: (context, params) => NavBarPage(
+                initialPage: '',
+                page: FavoriteWidget(),
+              ),
             ),
             FFRoute(
               name: 'CambiarContrasena',
@@ -193,6 +194,125 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => PagoWidget(
                 carritoLista: params.getParam('carritoLista',
                     ParamType.DocumentReference, false, ['productos']),
+              ),
+            ),
+            FFRoute(
+              name: 'Administracion',
+              path: 'administracion',
+              builder: (context, params) => NavBarPage(
+                initialPage: '',
+                page: AdministracionWidget(),
+              ),
+            ),
+            FFRoute(
+              name: 'ClientesMinoristas',
+              path: 'clientesMinoristas',
+              builder: (context, params) => NavBarPage(
+                initialPage: '',
+                page: ClientesMinoristasWidget(
+                  productosRef: params.getParam('productosRef',
+                      ParamType.DocumentReference, false, ['productos']),
+                ),
+              ),
+            ),
+            FFRoute(
+              name: 'AClienteMinorista',
+              path: 'aClienteMinorista',
+              builder: (context, params) => AClienteMinoristaWidget(),
+            ),
+            FFRoute(
+              name: 'ClientesMayoristas',
+              path: 'clientesMayoristas',
+              builder: (context, params) => NavBarPage(
+                initialPage: '',
+                page: ClientesMayoristasWidget(
+                  productosRef: params.getParam('productosRef',
+                      ParamType.DocumentReference, false, ['productos']),
+                ),
+              ),
+            ),
+            FFRoute(
+              name: 'AClienteMayorista',
+              path: 'aClienteMayorista',
+              builder: (context, params) => AClienteMayoristaWidget(),
+            ),
+            FFRoute(
+              name: 'Empleados',
+              path: 'empleados',
+              builder: (context, params) => NavBarPage(
+                initialPage: '',
+                page: EmpleadosWidget(
+                  productosRef: params.getParam('productosRef',
+                      ParamType.DocumentReference, false, ['productos']),
+                ),
+              ),
+            ),
+            FFRoute(
+              name: 'AEmpleado',
+              path: 'aEmpleado',
+              builder: (context, params) => AEmpleadoWidget(),
+            ),
+            FFRoute(
+              name: 'Provedores',
+              path: 'provedores',
+              builder: (context, params) => NavBarPage(
+                initialPage: '',
+                page: ProvedoresWidget(
+                  productosRef: params.getParam('productosRef',
+                      ParamType.DocumentReference, false, ['productos']),
+                ),
+              ),
+            ),
+            FFRoute(
+              name: 'AProvedores',
+              path: 'aProvedores',
+              builder: (context, params) => AProvedoresWidget(),
+            ),
+            FFRoute(
+              name: 'EClienteMinorista',
+              path: 'eClienteMinorista',
+              builder: (context, params) => EClienteMinoristaWidget(
+                clienteP: params.getParam('clienteP',
+                    ParamType.DocumentReference, false, ['clientes']),
+                nombreP: params.getParam('nombreP', ParamType.String),
+                direccionP: params.getParam('direccionP', ParamType.String),
+                telefonoP: params.getParam('telefonoP', ParamType.int),
+              ),
+            ),
+            FFRoute(
+              name: 'EClienteMayorista',
+              path: 'eClienteMayorista',
+              builder: (context, params) => EClienteMayoristaWidget(
+                clienteP: params.getParam(
+                    'clienteP',
+                    ParamType.DocumentReference,
+                    false,
+                    ['clientes-mayoristas']),
+                nombreP: params.getParam('nombreP', ParamType.String),
+                direccionP: params.getParam('direccionP', ParamType.String),
+                telefonoP: params.getParam('telefonoP', ParamType.int),
+              ),
+            ),
+            FFRoute(
+              name: 'EEmpleado',
+              path: 'eEmpleado',
+              builder: (context, params) => EEmpleadoWidget(
+                empleadoP: params.getParam('empleadoP',
+                    ParamType.DocumentReference, false, ['empleados']),
+                nombreP: params.getParam('nombreP', ParamType.String),
+                direccionP: params.getParam('direccionP', ParamType.String),
+                telefonoP: params.getParam('telefonoP', ParamType.int),
+              ),
+            ),
+            FFRoute(
+              name: 'EProvedores',
+              path: 'eProvedores',
+              builder: (context, params) => EProvedoresWidget(
+                provedorP: params.getParam('provedorP',
+                    ParamType.DocumentReference, false, ['provedores']),
+                nombreP: params.getParam('nombreP', ParamType.String),
+                direccionP: params.getParam('direccionP', ParamType.String),
+                telefonoP: params.getParam('telefonoP', ParamType.int),
               ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),

@@ -7,10 +7,12 @@ part of 'serializers.dart';
 // **************************************************************************
 
 Serializers _$serializers = (new Serializers().toBuilder()
-      ..add(CompraRecord.serializer)
+      ..add(ClientesMayoristasRecord.serializer)
+      ..add(ClientesRecord.serializer)
       ..add(ConsultasRecord.serializer)
-      ..add(ProductosGustadosRecord.serializer)
+      ..add(EmpleadosRecord.serializer)
       ..add(ProductosRecord.serializer)
+      ..add(ProvedoresRecord.serializer)
       ..add(ServiciosRecord.serializer)
       ..add(UsersRecord.serializer))
     .build();

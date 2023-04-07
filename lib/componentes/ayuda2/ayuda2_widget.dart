@@ -62,6 +62,7 @@ class _Ayuda2WidgetState extends State<Ayuda2Widget> {
                 alignment: AlignmentDirectional(0.0, 0.0),
                 child: Container(
                   width: double.infinity,
+                  height: 450.0,
                   constraints: BoxConstraints(
                     maxWidth: 500.0,
                   ),
@@ -82,7 +83,7 @@ class _Ayuda2WidgetState extends State<Ayuda2Widget> {
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
@@ -93,7 +94,7 @@ class _Ayuda2WidgetState extends State<Ayuda2Widget> {
                               Expanded(
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     Text(
                                       '¿Cómo solicitar servicio técnico?',
@@ -108,7 +109,7 @@ class _Ayuda2WidgetState extends State<Ayuda2Widget> {
                                     ),
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 8.0, 0.0, 0.0),
+                                          0.0, 18.0, 0.0, 0.0),
                                       child: Text(
                                         'No te preocupes, estamos acá para ayudarte!',
                                         style: FlutterFlowTheme.of(context)
@@ -143,9 +144,9 @@ class _Ayuda2WidgetState extends State<Ayuda2Widget> {
                         ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 8.0, 0.0, 40.0),
+                              0.0, 28.0, 0.0, 40.0),
                           child: Text(
-                            '1. Ingresa al catálogo de la aplicacion.\n2. Selecciona el el tipo de servicio que nececitas.\n3. Verifica que tengas todo lo que nececitas.\n4. En caso de no ver una opcion que se adecue a su necesidad, seleccione \"Solicitar cita con un técnico.\"\n5. Se registrará la solicitud y posterormente nos pondremos en contacto para agendar la visita.',
+                            '1. Ingresa al catálogo de la aplicacion.\n\n2. Selecciona el el tipo de servicio que nececitas.\n\n3. Verifica que tengas todo lo que nececitas.\n\n4. En caso de no ver una opcion que se adecue a su necesidad, seleccione \"Solicitar cita con un técnico.\"\n\n5. Se registrará la solicitud y posterormente nos pondremos en contacto para agendar la visita.',
                             style: FlutterFlowTheme.of(context)
                                 .titleSmall
                                 .override(

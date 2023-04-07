@@ -8,9 +8,11 @@ import '../flutter_flow/flutter_flow_util.dart';
 import 'schema/users_record.dart';
 import 'schema/productos_record.dart';
 import 'schema/consultas_record.dart';
-import 'schema/productos_gustados_record.dart';
 import 'schema/servicios_record.dart';
-import 'schema/compra_record.dart';
+import 'schema/clientes_record.dart';
+import 'schema/clientes_mayoristas_record.dart';
+import 'schema/empleados_record.dart';
+import 'schema/provedores_record.dart';
 import 'schema/serializers.dart';
 
 export 'dart:async' show StreamSubscription;
@@ -21,9 +23,11 @@ export 'schema/serializers.dart';
 export 'schema/users_record.dart';
 export 'schema/productos_record.dart';
 export 'schema/consultas_record.dart';
-export 'schema/productos_gustados_record.dart';
 export 'schema/servicios_record.dart';
-export 'schema/compra_record.dart';
+export 'schema/clientes_record.dart';
+export 'schema/clientes_mayoristas_record.dart';
+export 'schema/empleados_record.dart';
+export 'schema/provedores_record.dart';
 
 /// Functions to query UsersRecords (as a Stream and as a Future).
 Future<int> queryUsersRecordCount({
@@ -181,59 +185,6 @@ Future<FFFirestorePage<ConsultasRecord>> queryConsultasRecordPage({
       isStream: isStream,
     );
 
-/// Functions to query ProductosGustadosRecords (as a Stream and as a Future).
-Future<int> queryProductosGustadosRecordCount({
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-}) =>
-    queryCollectionCount(
-      ProductosGustadosRecord.collection,
-      queryBuilder: queryBuilder,
-      limit: limit,
-    );
-
-Stream<List<ProductosGustadosRecord>> queryProductosGustadosRecord({
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-  bool singleRecord = false,
-}) =>
-    queryCollection(
-      ProductosGustadosRecord.collection,
-      ProductosGustadosRecord.serializer,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
-
-Future<List<ProductosGustadosRecord>> queryProductosGustadosRecordOnce({
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-  bool singleRecord = false,
-}) =>
-    queryCollectionOnce(
-      ProductosGustadosRecord.collection,
-      ProductosGustadosRecord.serializer,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
-
-Future<FFFirestorePage<ProductosGustadosRecord>>
-    queryProductosGustadosRecordPage({
-  Query Function(Query)? queryBuilder,
-  DocumentSnapshot? nextPageMarker,
-  required int pageSize,
-  required bool isStream,
-}) =>
-        queryCollectionPage(
-          ProductosGustadosRecord.collection,
-          ProductosGustadosRecord.serializer,
-          queryBuilder: queryBuilder,
-          nextPageMarker: nextPageMarker,
-          pageSize: pageSize,
-          isStream: isStream,
-        );
-
 /// Functions to query ServiciosRecords (as a Stream and as a Future).
 Future<int> queryServiciosRecordCount({
   Query Function(Query)? queryBuilder,
@@ -286,52 +237,209 @@ Future<FFFirestorePage<ServiciosRecord>> queryServiciosRecordPage({
       isStream: isStream,
     );
 
-/// Functions to query CompraRecords (as a Stream and as a Future).
-Future<int> queryCompraRecordCount({
+/// Functions to query ClientesRecords (as a Stream and as a Future).
+Future<int> queryClientesRecordCount({
   Query Function(Query)? queryBuilder,
   int limit = -1,
 }) =>
     queryCollectionCount(
-      CompraRecord.collection,
+      ClientesRecord.collection,
       queryBuilder: queryBuilder,
       limit: limit,
     );
 
-Stream<List<CompraRecord>> queryCompraRecord({
+Stream<List<ClientesRecord>> queryClientesRecord({
   Query Function(Query)? queryBuilder,
   int limit = -1,
   bool singleRecord = false,
 }) =>
     queryCollection(
-      CompraRecord.collection,
-      CompraRecord.serializer,
+      ClientesRecord.collection,
+      ClientesRecord.serializer,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,
     );
 
-Future<List<CompraRecord>> queryCompraRecordOnce({
+Future<List<ClientesRecord>> queryClientesRecordOnce({
   Query Function(Query)? queryBuilder,
   int limit = -1,
   bool singleRecord = false,
 }) =>
     queryCollectionOnce(
-      CompraRecord.collection,
-      CompraRecord.serializer,
+      ClientesRecord.collection,
+      ClientesRecord.serializer,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,
     );
 
-Future<FFFirestorePage<CompraRecord>> queryCompraRecordPage({
+Future<FFFirestorePage<ClientesRecord>> queryClientesRecordPage({
   Query Function(Query)? queryBuilder,
   DocumentSnapshot? nextPageMarker,
   required int pageSize,
   required bool isStream,
 }) =>
     queryCollectionPage(
-      CompraRecord.collection,
-      CompraRecord.serializer,
+      ClientesRecord.collection,
+      ClientesRecord.serializer,
+      queryBuilder: queryBuilder,
+      nextPageMarker: nextPageMarker,
+      pageSize: pageSize,
+      isStream: isStream,
+    );
+
+/// Functions to query ClientesMayoristasRecords (as a Stream and as a Future).
+Future<int> queryClientesMayoristasRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      ClientesMayoristasRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<ClientesMayoristasRecord>> queryClientesMayoristasRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      ClientesMayoristasRecord.collection,
+      ClientesMayoristasRecord.serializer,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<ClientesMayoristasRecord>> queryClientesMayoristasRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      ClientesMayoristasRecord.collection,
+      ClientesMayoristasRecord.serializer,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<FFFirestorePage<ClientesMayoristasRecord>>
+    queryClientesMayoristasRecordPage({
+  Query Function(Query)? queryBuilder,
+  DocumentSnapshot? nextPageMarker,
+  required int pageSize,
+  required bool isStream,
+}) =>
+        queryCollectionPage(
+          ClientesMayoristasRecord.collection,
+          ClientesMayoristasRecord.serializer,
+          queryBuilder: queryBuilder,
+          nextPageMarker: nextPageMarker,
+          pageSize: pageSize,
+          isStream: isStream,
+        );
+
+/// Functions to query EmpleadosRecords (as a Stream and as a Future).
+Future<int> queryEmpleadosRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      EmpleadosRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<EmpleadosRecord>> queryEmpleadosRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      EmpleadosRecord.collection,
+      EmpleadosRecord.serializer,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<EmpleadosRecord>> queryEmpleadosRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      EmpleadosRecord.collection,
+      EmpleadosRecord.serializer,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<FFFirestorePage<EmpleadosRecord>> queryEmpleadosRecordPage({
+  Query Function(Query)? queryBuilder,
+  DocumentSnapshot? nextPageMarker,
+  required int pageSize,
+  required bool isStream,
+}) =>
+    queryCollectionPage(
+      EmpleadosRecord.collection,
+      EmpleadosRecord.serializer,
+      queryBuilder: queryBuilder,
+      nextPageMarker: nextPageMarker,
+      pageSize: pageSize,
+      isStream: isStream,
+    );
+
+/// Functions to query ProvedoresRecords (as a Stream and as a Future).
+Future<int> queryProvedoresRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      ProvedoresRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<ProvedoresRecord>> queryProvedoresRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      ProvedoresRecord.collection,
+      ProvedoresRecord.serializer,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<ProvedoresRecord>> queryProvedoresRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      ProvedoresRecord.collection,
+      ProvedoresRecord.serializer,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<FFFirestorePage<ProvedoresRecord>> queryProvedoresRecordPage({
+  Query Function(Query)? queryBuilder,
+  DocumentSnapshot? nextPageMarker,
+  required int pageSize,
+  required bool isStream,
+}) =>
+    queryCollectionPage(
+      ProvedoresRecord.collection,
+      ProvedoresRecord.serializer,
       queryBuilder: queryBuilder,
       nextPageMarker: nextPageMarker,
       pageSize: pageSize,

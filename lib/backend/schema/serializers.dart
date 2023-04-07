@@ -4,9 +4,11 @@ import 'package:from_css_color/from_css_color.dart';
 import 'users_record.dart';
 import 'productos_record.dart';
 import 'consultas_record.dart';
-import 'productos_gustados_record.dart';
 import 'servicios_record.dart';
-import 'compra_record.dart';
+import 'clientes_record.dart';
+import 'clientes_mayoristas_record.dart';
+import 'empleados_record.dart';
+import 'provedores_record.dart';
 
 import 'index.dart';
 
@@ -20,9 +22,11 @@ const kDocumentReferenceField = 'Document__Reference__Field';
   UsersRecord,
   ProductosRecord,
   ConsultasRecord,
-  ProductosGustadosRecord,
   ServiciosRecord,
-  CompraRecord,
+  ClientesRecord,
+  ClientesMayoristasRecord,
+  EmpleadosRecord,
+  ProvedoresRecord,
 ])
 final Serializers serializers = (_$serializers.toBuilder()
       ..add(DocumentReferenceSerializer())

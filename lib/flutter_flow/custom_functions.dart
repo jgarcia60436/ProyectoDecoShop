@@ -23,3 +23,12 @@ double dolarizacion(
 
   return double.parse(total.toStringAsFixed(2));
 }
+
+bool validaCaracteresContra(String contrasena) {
+  if (contrasena.length >= 8) {
+    return contrasena.contains(new RegExp(r'[a-zA-Z]')) &&
+        contrasena.contains(new RegExp(r'[0-9]'));
+  } else {
+    return false;
+  }
+}

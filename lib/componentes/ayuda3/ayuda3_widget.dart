@@ -62,6 +62,7 @@ class _Ayuda3WidgetState extends State<Ayuda3Widget> {
                 alignment: AlignmentDirectional(0.0, 0.0),
                 child: Container(
                   width: double.infinity,
+                  height: 450.0,
                   constraints: BoxConstraints(
                     maxWidth: 500.0,
                   ),
@@ -93,7 +94,7 @@ class _Ayuda3WidgetState extends State<Ayuda3Widget> {
                               Expanded(
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     Text(
                                       '¿Cuanta garantía tienen los productos?',
@@ -108,7 +109,7 @@ class _Ayuda3WidgetState extends State<Ayuda3Widget> {
                                     ),
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 8.0, 0.0, 0.0),
+                                          0.0, 18.0, 0.0, 0.0),
                                       child: Text(
                                         'No te preocupes, estamos acá para ayudarte!',
                                         style: FlutterFlowTheme.of(context)
@@ -143,9 +144,9 @@ class _Ayuda3WidgetState extends State<Ayuda3Widget> {
                         ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 8.0, 0.0, 40.0),
+                              0.0, 28.0, 0.0, 40.0),
                           child: Text(
-                            '1. Racks, canastas, o rieles, tienen garantía de 6 meses ante defectos de fábrica.\n2.Radios o pantallas, su gatantía es de 1 año ante defectos de fpabrica.\n3. El polarizado tiene garantía ded 1 mes ante cualquier defecto de instalación.\n4. Las instalaciones tienen garantía de 1 mes ante cualquier defecto de aplicación.',
+                            '1. Racks, canastas, o rieles, tienen garantía de 6 meses ante defectos de fábrica.\n\n2.Radios o pantallas, su gatantía es de 1 año ante defectos de fpabrica.\n\n3. El polarizado tiene garantía ded 1 mes ante cualquier defecto de instalación.\n\n4. Las instalaciones tienen garantía de 1 mes ante cualquier defecto de aplicación.',
                             style: FlutterFlowTheme.of(context)
                                 .titleSmall
                                 .override(
