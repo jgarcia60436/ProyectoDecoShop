@@ -67,6 +67,20 @@ class _$UsersRecordSerializer implements StructuredSerializer<UsersRecord> {
         ..add('id')
         ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
+    value = object.direccion;
+    if (value != null) {
+      result
+        ..add('direccion')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.role;
+    if (value != null) {
+      result
+        ..add('role')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
     value = object.ffRef;
     if (value != null) {
       result
@@ -117,6 +131,14 @@ class _$UsersRecordSerializer implements StructuredSerializer<UsersRecord> {
           result.id = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int?;
           break;
+        case 'direccion':
+          result.direccion = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'role':
+          result.role = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
         case 'Document__Reference__Field':
           result.ffRef = serializers.deserialize(value,
               specifiedType: const FullType(DocumentReference, const [
@@ -146,6 +168,10 @@ class _$UsersRecord extends UsersRecord {
   @override
   final int? id;
   @override
+  final String? direccion;
+  @override
+  final String? role;
+  @override
   final DocumentReference<Object?>? ffRef;
 
   factory _$UsersRecord([void Function(UsersRecordBuilder)? updates]) =>
@@ -159,6 +185,8 @@ class _$UsersRecord extends UsersRecord {
       this.createdTime,
       this.phoneNumber,
       this.id,
+      this.direccion,
+      this.role,
       this.ffRef})
       : super._();
 
@@ -180,6 +208,8 @@ class _$UsersRecord extends UsersRecord {
         createdTime == other.createdTime &&
         phoneNumber == other.phoneNumber &&
         id == other.id &&
+        direccion == other.direccion &&
+        role == other.role &&
         ffRef == other.ffRef;
   }
 
@@ -193,6 +223,8 @@ class _$UsersRecord extends UsersRecord {
     _$hash = $jc(_$hash, createdTime.hashCode);
     _$hash = $jc(_$hash, phoneNumber.hashCode);
     _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jc(_$hash, direccion.hashCode);
+    _$hash = $jc(_$hash, role.hashCode);
     _$hash = $jc(_$hash, ffRef.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
@@ -208,6 +240,8 @@ class _$UsersRecord extends UsersRecord {
           ..add('createdTime', createdTime)
           ..add('phoneNumber', phoneNumber)
           ..add('id', id)
+          ..add('direccion', direccion)
+          ..add('role', role)
           ..add('ffRef', ffRef))
         .toString();
   }
@@ -244,6 +278,14 @@ class UsersRecordBuilder implements Builder<UsersRecord, UsersRecordBuilder> {
   int? get id => _$this._id;
   set id(int? id) => _$this._id = id;
 
+  String? _direccion;
+  String? get direccion => _$this._direccion;
+  set direccion(String? direccion) => _$this._direccion = direccion;
+
+  String? _role;
+  String? get role => _$this._role;
+  set role(String? role) => _$this._role = role;
+
   DocumentReference<Object?>? _ffRef;
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
   set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
@@ -262,6 +304,8 @@ class UsersRecordBuilder implements Builder<UsersRecord, UsersRecordBuilder> {
       _createdTime = $v.createdTime;
       _phoneNumber = $v.phoneNumber;
       _id = $v.id;
+      _direccion = $v.direccion;
+      _role = $v.role;
       _ffRef = $v.ffRef;
       _$v = null;
     }
@@ -292,6 +336,8 @@ class UsersRecordBuilder implements Builder<UsersRecord, UsersRecordBuilder> {
             createdTime: createdTime,
             phoneNumber: phoneNumber,
             id: id,
+            direccion: direccion,
+            role: role,
             ffRef: ffRef);
     replace(_$result);
     return _$result;

@@ -27,6 +27,11 @@ class FFAppState extends ChangeNotifier {
     _compra =
         prefs.getStringList('ff_compra')?.map((path) => path.ref).toList() ??
             _compra;
+    _clientesMinoristas = prefs
+            .getStringList('ff_clientesMinoristas')
+            ?.map((path) => path.ref)
+            .toList() ??
+        _clientesMinoristas;
   }
 
   void update(VoidCallback callback) {
@@ -125,6 +130,38 @@ class FFAppState extends ChangeNotifier {
   void removeAtIndexFromCompra(int _index) {
     _compra.removeAt(_index);
     prefs.setStringList('ff_compra', _compra.map((x) => x.path).toList());
+  }
+
+  String _validaContra = '';
+  String get validaContra => _validaContra;
+  set validaContra(String _value) {
+    _validaContra = _value;
+  }
+
+  List<DocumentReference> _clientesMinoristas = [];
+  List<DocumentReference> get clientesMinoristas => _clientesMinoristas;
+  set clientesMinoristas(List<DocumentReference> _value) {
+    _clientesMinoristas = _value;
+    prefs.setStringList(
+        'ff_clientesMinoristas', _value.map((x) => x.path).toList());
+  }
+
+  void addToClientesMinoristas(DocumentReference _value) {
+    _clientesMinoristas.add(_value);
+    prefs.setStringList('ff_clientesMinoristas',
+        _clientesMinoristas.map((x) => x.path).toList());
+  }
+
+  void removeFromClientesMinoristas(DocumentReference _value) {
+    _clientesMinoristas.remove(_value);
+    prefs.setStringList('ff_clientesMinoristas',
+        _clientesMinoristas.map((x) => x.path).toList());
+  }
+
+  void removeAtIndexFromClientesMinoristas(int _index) {
+    _clientesMinoristas.removeAt(_index);
+    prefs.setStringList('ff_clientesMinoristas',
+        _clientesMinoristas.map((x) => x.path).toList());
   }
 }
 

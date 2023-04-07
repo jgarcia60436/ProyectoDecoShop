@@ -11,15 +11,14 @@ abstract class ConsultasRecord
   static Serializer<ConsultasRecord> get serializer =>
       _$consultasRecordSerializer;
 
-  @BuiltValueField(wireName: 'Consulta_clientes')
-  String? get consultaClientes;
+  String? get comentario;
 
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference? get ffRef;
   DocumentReference get reference => ffRef!;
 
   static void _initializeBuilder(ConsultasRecordBuilder builder) =>
-      builder..consultaClientes = '';
+      builder..comentario = '';
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('Consultas');
@@ -43,12 +42,12 @@ abstract class ConsultasRecord
 }
 
 Map<String, dynamic> createConsultasRecordData({
-  String? consultaClientes,
+  String? comentario,
 }) {
   final firestoreData = serializers.toFirestore(
     ConsultasRecord.serializer,
     ConsultasRecord(
-      (c) => c..consultaClientes = consultaClientes,
+      (c) => c..comentario = comentario,
     ),
   );
 

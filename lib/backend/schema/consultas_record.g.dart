@@ -21,10 +21,10 @@ class _$ConsultasRecordSerializer
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[];
     Object? value;
-    value = object.consultaClientes;
+    value = object.comentario;
     if (value != null) {
       result
-        ..add('Consulta_clientes')
+        ..add('comentario')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
@@ -51,8 +51,8 @@ class _$ConsultasRecordSerializer
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
-        case 'Consulta_clientes':
-          result.consultaClientes = serializers.deserialize(value,
+        case 'comentario':
+          result.comentario = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
         case 'Document__Reference__Field':
@@ -70,14 +70,14 @@ class _$ConsultasRecordSerializer
 
 class _$ConsultasRecord extends ConsultasRecord {
   @override
-  final String? consultaClientes;
+  final String? comentario;
   @override
   final DocumentReference<Object?>? ffRef;
 
   factory _$ConsultasRecord([void Function(ConsultasRecordBuilder)? updates]) =>
       (new ConsultasRecordBuilder()..update(updates))._build();
 
-  _$ConsultasRecord._({this.consultaClientes, this.ffRef}) : super._();
+  _$ConsultasRecord._({this.comentario, this.ffRef}) : super._();
 
   @override
   ConsultasRecord rebuild(void Function(ConsultasRecordBuilder) updates) =>
@@ -91,14 +91,14 @@ class _$ConsultasRecord extends ConsultasRecord {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is ConsultasRecord &&
-        consultaClientes == other.consultaClientes &&
+        comentario == other.comentario &&
         ffRef == other.ffRef;
   }
 
   @override
   int get hashCode {
     var _$hash = 0;
-    _$hash = $jc(_$hash, consultaClientes.hashCode);
+    _$hash = $jc(_$hash, comentario.hashCode);
     _$hash = $jc(_$hash, ffRef.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
@@ -107,7 +107,7 @@ class _$ConsultasRecord extends ConsultasRecord {
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'ConsultasRecord')
-          ..add('consultaClientes', consultaClientes)
+          ..add('comentario', comentario)
           ..add('ffRef', ffRef))
         .toString();
   }
@@ -117,10 +117,9 @@ class ConsultasRecordBuilder
     implements Builder<ConsultasRecord, ConsultasRecordBuilder> {
   _$ConsultasRecord? _$v;
 
-  String? _consultaClientes;
-  String? get consultaClientes => _$this._consultaClientes;
-  set consultaClientes(String? consultaClientes) =>
-      _$this._consultaClientes = consultaClientes;
+  String? _comentario;
+  String? get comentario => _$this._comentario;
+  set comentario(String? comentario) => _$this._comentario = comentario;
 
   DocumentReference<Object?>? _ffRef;
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
@@ -133,7 +132,7 @@ class ConsultasRecordBuilder
   ConsultasRecordBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _consultaClientes = $v.consultaClientes;
+      _comentario = $v.comentario;
       _ffRef = $v.ffRef;
       _$v = null;
     }
@@ -155,9 +154,8 @@ class ConsultasRecordBuilder
   ConsultasRecord build() => _build();
 
   _$ConsultasRecord _build() {
-    final _$result = _$v ??
-        new _$ConsultasRecord._(
-            consultaClientes: consultaClientes, ffRef: ffRef);
+    final _$result =
+        _$v ?? new _$ConsultasRecord._(comentario: comentario, ffRef: ffRef);
     replace(_$result);
     return _$result;
   }
