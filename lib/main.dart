@@ -4,13 +4,14 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'auth/firebase_user_provider.dart';
-import 'auth/auth_util.dart';
+import 'auth/firebase_auth/firebase_user_provider.dart';
+import 'auth/firebase_auth/auth_util.dart';
 
 import 'backend/firebase/firebase_config.dart';
 import 'flutter_flow/flutter_flow_theme.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 import 'flutter_flow/internationalization.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:floating_bottom_navigation_bar/floating_bottom_navigation_bar.dart';
@@ -44,7 +45,7 @@ class _MyAppState extends State<MyApp> {
   Locale? _locale;
   ThemeMode _themeMode = FlutterFlowTheme.themeMode;
 
-  late Stream<ProyectoDecoShopFirebaseUser> userStream;
+  late Stream<BaseAuthUser> userStream;
 
   late AppStateNotifier _appStateNotifier;
   late GoRouter _router;
@@ -127,11 +128,11 @@ class _NavBarPageState extends State<NavBarPage> {
   @override
   Widget build(BuildContext context) {
     final tabs = {
-      'Home': HomeWidget(),
-      'Carrito': CarritoWidget(),
       'MiCuenta': MiCuentaWidget(),
-      'Ayuda': AyudaWidget(),
+      'Carrito': CarritoWidget(),
+      'Home': HomeWidget(),
       'Catalogo': CatalogoWidget(),
+      'Ayuda': AyudaWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
     return Scaffold(
@@ -159,12 +160,12 @@ class _NavBarPageState extends State<NavBarPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(
-                  Icons.home_rounded,
+                  Icons.person_rounded,
                   color: currentIndex == 0 ? Colors.white : Color(0xFF608DEE),
                   size: 24.0,
                 ),
                 Text(
-                  'Inicio',
+                  'Perfil',
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     color: currentIndex == 0 ? Colors.white : Color(0xFF608DEE),
@@ -199,12 +200,12 @@ class _NavBarPageState extends State<NavBarPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(
-                  Icons.person_rounded,
+                  Icons.home_rounded,
                   color: currentIndex == 2 ? Colors.white : Color(0xFF608DEE),
                   size: 24.0,
                 ),
                 Text(
-                  'Perfil',
+                  'Inicio',
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     color: currentIndex == 2 ? Colors.white : Color(0xFF608DEE),
@@ -219,12 +220,12 @@ class _NavBarPageState extends State<NavBarPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(
-                  Icons.help_outline_rounded,
+                  FontAwesomeIcons.shoppingBasket,
                   color: currentIndex == 3 ? Colors.white : Color(0xFF608DEE),
                   size: 24.0,
                 ),
                 Text(
-                  'Ayuda',
+                  'Catalogo',
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     color: currentIndex == 3 ? Colors.white : Color(0xFF608DEE),
@@ -239,12 +240,12 @@ class _NavBarPageState extends State<NavBarPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(
-                  FontAwesomeIcons.shoppingBasket,
+                  Icons.help_outline_rounded,
                   color: currentIndex == 4 ? Colors.white : Color(0xFF608DEE),
                   size: 24.0,
                 ),
                 Text(
-                  'Catalogo',
+                  'Ayuda',
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     color: currentIndex == 4 ? Colors.white : Color(0xFF608DEE),

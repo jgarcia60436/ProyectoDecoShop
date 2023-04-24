@@ -11,27 +11,19 @@ abstract class ServiciosRecord
   static Serializer<ServiciosRecord> get serializer =>
       _$serviciosRecordSerializer;
 
-  @BuiltValueField(wireName: 'Nombre')
-  String? get nombre;
-
-  @BuiltValueField(wireName: 'Precio')
-  double? get precio;
-
-  @BuiltValueField(wireName: 'Descripcion')
-  String? get descripcion;
-
   @BuiltValueField(wireName: 'Imagen')
-  String? get imagen;
+  BuiltList<String>? get imagen;
+
+  @BuiltValueField(wireName: 'Nombre')
+  BuiltList<String>? get nombre;
 
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference? get ffRef;
   DocumentReference get reference => ffRef!;
 
   static void _initializeBuilder(ServiciosRecordBuilder builder) => builder
-    ..nombre = ''
-    ..precio = 0.0
-    ..descripcion = ''
-    ..imagen = '';
+    ..imagen = ListBuilder()
+    ..nombre = ListBuilder();
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('servicios');
@@ -54,20 +46,13 @@ abstract class ServiciosRecord
           {...mapFromFirestore(data), kDocumentReferenceField: reference})!;
 }
 
-Map<String, dynamic> createServiciosRecordData({
-  String? nombre,
-  double? precio,
-  String? descripcion,
-  String? imagen,
-}) {
+Map<String, dynamic> createServiciosRecordData() {
   final firestoreData = serializers.toFirestore(
     ServiciosRecord.serializer,
     ServiciosRecord(
       (s) => s
-        ..nombre = nombre
-        ..precio = precio
-        ..descripcion = descripcion
-        ..imagen = imagen,
+        ..imagen = null
+        ..nombre = null,
     ),
   );
 

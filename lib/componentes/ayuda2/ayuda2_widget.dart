@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'ayuda2_model.dart';
@@ -80,84 +81,87 @@ class _Ayuda2WidgetState extends State<Ayuda2Widget> {
                   child: Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 20.0),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 12.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Expanded(
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      '¿Cómo solicitar servicio técnico?',
-                                      style: FlutterFlowTheme.of(context)
-                                          .headlineMedium
-                                          .override(
-                                            fontFamily: 'Outfit',
-                                            color: Color(0xFF101213),
-                                            fontSize: 27.0,
-                                            fontWeight: FontWeight.w600,
-                                          ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 18.0, 0.0, 0.0),
-                                      child: Text(
-                                        'No te preocupes, estamos acá para ayudarte!',
+                    child: SingleChildScrollView(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 12.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Expanded(
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        '¿Cómo solicitar servicio técnico?',
                                         style: FlutterFlowTheme.of(context)
-                                            .bodySmall
+                                            .headlineMedium
                                             .override(
                                               fontFamily: 'Outfit',
-                                              color: Color(0xFF57636C),
-                                              fontSize: 16.0,
-                                              fontWeight: FontWeight.normal,
+                                              color: Color(0xFF101213),
+                                              fontSize: 27.0,
+                                              fontWeight: FontWeight.w600,
                                             ),
                                       ),
-                                    ),
-                                  ],
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 18.0, 0.0, 0.0),
+                                        child: Text(
+                                          'No te preocupes, estamos acá para ayudarte!',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodySmall
+                                              .override(
+                                                fontFamily: 'Outfit',
+                                                color: Color(0xFF57636C),
+                                                fontSize: 16.0,
+                                                fontWeight: FontWeight.normal,
+                                              ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                              ),
-                              FlutterFlowIconButton(
-                                borderColor: Colors.transparent,
-                                borderRadius: 30.0,
-                                borderWidth: 1.0,
-                                buttonSize: 44.0,
-                                icon: Icon(
-                                  Icons.close_rounded,
-                                  color: Colors.black,
-                                  size: 30.0,
+                                FlutterFlowIconButton(
+                                  borderColor: Colors.transparent,
+                                  borderRadius: 30.0,
+                                  borderWidth: 1.0,
+                                  buttonSize: 44.0,
+                                  icon: Icon(
+                                    Icons.close_rounded,
+                                    color: Colors.black,
+                                    size: 30.0,
+                                  ),
+                                  onPressed: () async {
+                                    Navigator.pop(context);
+                                  },
                                 ),
-                                onPressed: () async {
-                                  Navigator.pop(context);
-                                },
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 28.0, 0.0, 40.0),
-                          child: Text(
-                            '1. Ingresa al catálogo de la aplicacion.\n\n2. Selecciona el el tipo de servicio que nececitas.\n\n3. Verifica que tengas todo lo que nececitas.\n\n4. En caso de no ver una opcion que se adecue a su necesidad, seleccione \"Solicitar cita con un técnico.\"\n\n5. Se registrará la solicitud y posterormente nos pondremos en contacto para agendar la visita.',
-                            style: FlutterFlowTheme.of(context)
-                                .titleSmall
-                                .override(
-                                  fontFamily: 'Outfit',
-                                  color: Colors.black,
-                                  fontSize: 16.0,
-                                  fontWeight: FontWeight.w500,
-                                ),
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 28.0, 0.0, 40.0),
+                            child: Text(
+                              '1. Ingresa al catálogo de la aplicacion.\n\n2. Selecciona el el tipo de servicio que nececitas.\n\n3. Verifica que tengas todo lo que nececitas.\n\n4. En caso de no ver una opcion que se adecue a su necesidad, seleccione \"Solicitar cita con un técnico.\"\n\n5. Se registrará la solicitud y posterormente nos pondremos en contacto para agendar la visita.',
+                              style: FlutterFlowTheme.of(context)
+                                  .titleSmall
+                                  .override(
+                                    fontFamily: 'Outfit',
+                                    color: Colors.black,
+                                    fontSize: 16.0,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),

@@ -16,24 +16,33 @@ export '/historial_copy/historial_copy_widget.dart' show HistorialCopyWidget;
 export '/pago/pago_widget.dart' show PagoWidget;
 export '/administracion/administracion/administracion_widget.dart'
     show AdministracionWidget;
-export '/administracion/clientes_minoristas/clientes_minoristas_widget.dart'
+export '/administracion/cliente_minorista/clientes_minoristas/clientes_minoristas_widget.dart'
     show ClientesMinoristasWidget;
-export '/administracion/a_cliente_minorista/a_cliente_minorista_widget.dart'
+export '/administracion/cliente_minorista/a_cliente_minorista/a_cliente_minorista_widget.dart'
     show AClienteMinoristaWidget;
-export '/administracion/clientes_mayoristas/clientes_mayoristas_widget.dart'
+export '/administracion/cliente_mayorista/clientes_mayoristas/clientes_mayoristas_widget.dart'
     show ClientesMayoristasWidget;
-export '/administracion/a_cliente_mayorista/a_cliente_mayorista_widget.dart'
+export '/administracion/cliente_mayorista/a_cliente_mayorista/a_cliente_mayorista_widget.dart'
     show AClienteMayoristaWidget;
-export '/administracion/empleados/empleados_widget.dart' show EmpleadosWidget;
-export '/administracion/a_empleado/a_empleado_widget.dart' show AEmpleadoWidget;
-export '/administracion/provedores/provedores_widget.dart'
+export '/administracion/empleados/empleados/empleados_widget.dart'
+    show EmpleadosWidget;
+export '/administracion/empleados/a_empleado/a_empleado_widget.dart'
+    show AEmpleadoWidget;
+export '/administracion/proveedores/provedores/provedores_widget.dart'
     show ProvedoresWidget;
-export '/administracion/a_provedores/a_provedores_widget.dart'
+export '/administracion/proveedores/a_provedores/a_provedores_widget.dart'
     show AProvedoresWidget;
-export '/administracion/e_cliente_minorista/e_cliente_minorista_widget.dart'
+export '/administracion/cliente_minorista/e_cliente_minorista/e_cliente_minorista_widget.dart'
     show EClienteMinoristaWidget;
-export '/administracion/e_cliente_mayorista/e_cliente_mayorista_widget.dart'
+export '/administracion/cliente_mayorista/e_cliente_mayorista/e_cliente_mayorista_widget.dart'
     show EClienteMayoristaWidget;
-export '/administracion/e_empleado/e_empleado_widget.dart' show EEmpleadoWidget;
-export '/administracion/e_provedores/e_provedores_widget.dart'
+export '/administracion/empleados/e_empleado/e_empleado_widget.dart'
+    show EEmpleadoWidget;
+export '/administracion/proveedores/e_provedores/e_provedores_widget.dart'
     show EProvedoresWidget;
+export '/administracion/productos/a_productos/a_productos_widget.dart'
+    show AProductosWidget;
+export '/administracion/productos/productos_admin/productos_admin_widget.dart'
+    show ProductosAdminWidget;
+export '/administracion/productos/e_productos/e_productos_widget.dart'
+    show EProductosWidget;

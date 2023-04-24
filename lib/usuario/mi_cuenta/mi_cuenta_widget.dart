@@ -1,11 +1,14 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/custom_code/widgets/index.dart' as custom_widgets;
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'mi_cuenta_model.dart';
@@ -65,7 +68,7 @@ class _MiCuentaWidgetState extends State<MiCuentaWidget> {
             },
           ),
           title: Text(
-            'Mi Cuenta',
+            'Perfil',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   fontFamily: 'Poppins',
                   color: Colors.white,
@@ -86,122 +89,153 @@ class _MiCuentaWidgetState extends State<MiCuentaWidget> {
                       EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 0.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            0.0, 0.0, 310.0, 0.0),
-                        child: InkWell(
-                          onTap: () async {
-                            GoRouter.of(context).prepareAuthEvent();
-                            await signOut();
-                            GoRouter.of(context).clearRedirectLocation();
-
-                            context.pushNamedAuth('Login', mounted);
-                          },
-                          child: Icon(
-                            Icons.login_rounded,
-                            color: Color(0xFF4B39EF),
-                            size: 28.0,
-                          ),
-                        ),
-                      ),
-                      if (Theme.of(context).brightness == Brightness.light)
-                        InkWell(
-                          onTap: () async {
-                            setDarkModeSetting(context, ThemeMode.dark);
-                            if ((Theme.of(context).brightness ==
-                                    Brightness.dark) ||
-                                (Theme.of(context).brightness ==
-                                    Brightness.light)) {
-                              await Future.delayed(
-                                  const Duration(milliseconds: 1000));
-                            } else {
-                              await Future.delayed(
-                                  const Duration(milliseconds: 1000));
-                            }
-                          },
-                          child: Icon(
-                            Icons.nights_stay_rounded,
-                            color: FlutterFlowTheme.of(context).primary,
-                            size: 32.0,
-                          ),
-                        ),
-                      if (Theme.of(context).brightness == Brightness.dark)
-                        InkWell(
-                          onTap: () async {
-                            setDarkModeSetting(context, ThemeMode.light);
-                          },
-                          child: Icon(
-                            Icons.wb_sunny_rounded,
-                            color: FlutterFlowTheme.of(context).primaryBtnText,
-                            size: 32.0,
-                          ),
-                        ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Column(
                         mainAxisSize: MainAxisSize.max,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              if ((Theme.of(context).brightness ==
-                                      Brightness.light) ==
-                                  true)
-                                ClipRRect(
-                                  borderRadius: BorderRadius.circular(100.0),
-                                  child: Image.asset(
-                                    'assets/images/decoshop-removebg-preview.png',
-                                    width:
-                                        MediaQuery.of(context).size.width * 0.3,
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                              if ((Theme.of(context).brightness ==
-                                      Brightness.light) ==
-                                  false)
-                                ClipRRect(
-                                  borderRadius: BorderRadius.circular(100.0),
-                                  child: Image.asset(
-                                    'assets/images/LOGO.png',
-                                    width:
-                                        MediaQuery.of(context).size.width * 0.3,
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                            ],
+                          InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              GoRouter.of(context).prepareAuthEvent();
+                              await authManager.signOut();
+                              GoRouter.of(context).clearRedirectLocation();
+
+                              context.pushNamedAuth('Login', mounted);
+                            },
+                            child: Icon(
+                              Icons.login_rounded,
+                              color: FlutterFlowTheme.of(context).primary,
+                              size: 28.0,
+                            ),
                           ),
-                          Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    10.0, 10.0, 10.0, 10.0),
-                                child: Text(
-                                  'DATOS PERSONALES',
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Poppins',
-                                        fontSize: 18.0,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                ),
+                        ],
+                      ),
+                      Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Container(
+                            width: 300.0,
+                            height: 70.0,
+                            child: custom_widgets.Linea(
+                              width: 300.0,
+                              height: 70.0,
+                              horizontalText: functions.saludoHoraActual(),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          if (Theme.of(context).brightness == Brightness.light)
+                            InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                setDarkModeSetting(context, ThemeMode.dark);
+                                if ((Theme.of(context).brightness ==
+                                        Brightness.dark) ||
+                                    (Theme.of(context).brightness ==
+                                        Brightness.light)) {
+                                  await Future.delayed(
+                                      const Duration(milliseconds: 1000));
+                                } else {
+                                  await Future.delayed(
+                                      const Duration(milliseconds: 1000));
+                                }
+                              },
+                              child: Icon(
+                                Icons.nights_stay_rounded,
+                                color: FlutterFlowTheme.of(context).primary,
+                                size: 32.0,
                               ),
-                            ],
-                          ),
+                            ),
+                          if (Theme.of(context).brightness == Brightness.dark)
+                            InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                setDarkModeSetting(context, ThemeMode.light);
+                              },
+                              child: Icon(
+                                Icons.wb_sunny_rounded,
+                                color:
+                                    FlutterFlowTheme.of(context).primaryBtnText,
+                                size: 32.0,
+                              ),
+                            ),
                         ],
                       ),
                     ],
                   ),
+                ),
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            if ((Theme.of(context).brightness ==
+                                    Brightness.light) ==
+                                true)
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(100.0),
+                                child: Image.asset(
+                                  'assets/images/decoshop-removebg-preview.png',
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.3,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                            if ((Theme.of(context).brightness ==
+                                    Brightness.light) ==
+                                false)
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(100.0),
+                                child: Image.asset(
+                                  'assets/images/LOGO.png',
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.3,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                          ],
+                        ),
+                        Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  5.0, 5.0, 5.0, 5.0),
+                              child: Text(
+                                'DATOS PERSONALES',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Poppins',
+                                      fontSize: 18.0,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
                 Padding(
                   padding:
@@ -217,8 +251,9 @@ class _MiCuentaWidgetState extends State<MiCuentaWidget> {
                           child: SizedBox(
                             width: 50.0,
                             height: 50.0,
-                            child: CircularProgressIndicator(
+                            child: SpinKitChasingDots(
                               color: FlutterFlowTheme.of(context).primary,
+                              size: 50.0,
                             ),
                           ),
                         );
@@ -273,7 +308,7 @@ class _MiCuentaWidgetState extends State<MiCuentaWidget> {
                             children: [
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 15.0),
+                                    0.0, 0.0, 0.0, 10.0),
                                 child: AuthUserStreamWidget(
                                   builder: (context) => Text(
                                     valueOrDefault(
@@ -289,13 +324,17 @@ class _MiCuentaWidgetState extends State<MiCuentaWidget> {
                               'Admin')
                             Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 10.0),
+                                  0.0, 0.0, 0.0, 5.0),
                               child: AuthUserStreamWidget(
                                 builder: (context) => Row(
                                   mainAxisSize: MainAxisSize.max,
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
                                       onTap: () async {
                                         context.pushNamed('Administracion');
                                       },
@@ -369,7 +408,7 @@ class _MiCuentaWidgetState extends State<MiCuentaWidget> {
                   children: [
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
                       child: Text(
                         'Califica tu experiencia en nustra página!',
                         style: FlutterFlowTheme.of(context).bodyMedium,
@@ -383,7 +422,7 @@ class _MiCuentaWidgetState extends State<MiCuentaWidget> {
                   children: [
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
                       child: RatingBar.builder(
                         onRatingUpdate: (newValue) =>
                             setState(() => _model.ratingBarValue = newValue),
@@ -435,6 +474,10 @@ class _MiCuentaWidgetState extends State<MiCuentaWidget> {
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
                                   onTap: () async {
                                     await launchURL(
                                         'https://www.facebook.com/DecoSHCR');
@@ -447,6 +490,10 @@ class _MiCuentaWidgetState extends State<MiCuentaWidget> {
                                   ),
                                 ),
                                 InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
                                   onTap: () async {
                                     await launchURL(
                                         'https://www.instagram.com/decoshop_cr/');

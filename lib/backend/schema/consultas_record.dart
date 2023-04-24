@@ -13,12 +13,22 @@ abstract class ConsultasRecord
 
   String? get comentario;
 
+  @BuiltValueField(wireName: 'nombre_usuario')
+  String? get nombreUsuario;
+
+  String? get correo;
+
+  String? get telefono;
+
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference? get ffRef;
   DocumentReference get reference => ffRef!;
 
-  static void _initializeBuilder(ConsultasRecordBuilder builder) =>
-      builder..comentario = '';
+  static void _initializeBuilder(ConsultasRecordBuilder builder) => builder
+    ..comentario = ''
+    ..nombreUsuario = ''
+    ..correo = ''
+    ..telefono = '';
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('Consultas');
@@ -43,11 +53,18 @@ abstract class ConsultasRecord
 
 Map<String, dynamic> createConsultasRecordData({
   String? comentario,
+  String? nombreUsuario,
+  String? correo,
+  String? telefono,
 }) {
   final firestoreData = serializers.toFirestore(
     ConsultasRecord.serializer,
     ConsultasRecord(
-      (c) => c..comentario = comentario,
+      (c) => c
+        ..comentario = comentario
+        ..nombreUsuario = nombreUsuario
+        ..correo = correo
+        ..telefono = telefono,
     ),
   );
 

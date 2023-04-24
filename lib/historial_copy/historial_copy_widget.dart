@@ -9,6 +9,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -162,10 +163,11 @@ class _HistorialCopyWidgetState extends State<HistorialCopyWidget>
                                           child: SizedBox(
                                             width: 50.0,
                                             height: 50.0,
-                                            child: CircularProgressIndicator(
+                                            child: SpinKitChasingDots(
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .primary,
+                                              size: 50.0,
                                             ),
                                           ),
                                         );
@@ -352,6 +354,10 @@ class _HistorialCopyWidgetState extends State<HistorialCopyWidget>
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
                         onTap: () async {
                           setState(() {
                             FFAppState().carritoSum = 0.0;
@@ -416,6 +422,10 @@ class _HistorialCopyWidgetState extends State<HistorialCopyWidget>
                         ),
                       ),
                       InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
                         onTap: () async {
                           setState(() {
                             FFAppState().addToCompra(widget.productosRef!);

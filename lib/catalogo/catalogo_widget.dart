@@ -9,6 +9,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -209,9 +210,10 @@ class _CatalogoWidgetState extends State<CatalogoWidget>
                                   child: SizedBox(
                                     width: 50.0,
                                     height: 50.0,
-                                    child: CircularProgressIndicator(
+                                    child: SpinKitChasingDots(
                                       color:
                                           FlutterFlowTheme.of(context).primary,
+                                      size: 50.0,
                                     ),
                                   ),
                                 );
@@ -227,6 +229,10 @@ class _CatalogoWidgetState extends State<CatalogoWidget>
                                     final columnProductosRecord =
                                         columnProductosRecordList[columnIndex];
                                     return InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
                                       onTap: () async {
                                         context.pushNamed(
                                           'Producto',
