@@ -1,7 +1,7 @@
 import 'package:built_value/serializer.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import '../auth/auth_util.dart';
+import '../auth/firebase_auth/auth_util.dart';
 
 import '../flutter_flow/flutter_flow_util.dart';
 
@@ -13,6 +13,7 @@ import 'schema/clientes_record.dart';
 import 'schema/clientes_mayoristas_record.dart';
 import 'schema/empleados_record.dart';
 import 'schema/provedores_record.dart';
+import 'schema/servicios_sin_lista_record.dart';
 import 'schema/serializers.dart';
 
 export 'dart:async' show StreamSubscription;
@@ -28,6 +29,7 @@ export 'schema/clientes_record.dart';
 export 'schema/clientes_mayoristas_record.dart';
 export 'schema/empleados_record.dart';
 export 'schema/provedores_record.dart';
+export 'schema/servicios_sin_lista_record.dart';
 
 /// Functions to query UsersRecords (as a Stream and as a Future).
 Future<int> queryUsersRecordCount({
@@ -445,6 +447,59 @@ Future<FFFirestorePage<ProvedoresRecord>> queryProvedoresRecordPage({
       pageSize: pageSize,
       isStream: isStream,
     );
+
+/// Functions to query ServiciosSinListaRecords (as a Stream and as a Future).
+Future<int> queryServiciosSinListaRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      ServiciosSinListaRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<ServiciosSinListaRecord>> queryServiciosSinListaRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      ServiciosSinListaRecord.collection,
+      ServiciosSinListaRecord.serializer,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<ServiciosSinListaRecord>> queryServiciosSinListaRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      ServiciosSinListaRecord.collection,
+      ServiciosSinListaRecord.serializer,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<FFFirestorePage<ServiciosSinListaRecord>>
+    queryServiciosSinListaRecordPage({
+  Query Function(Query)? queryBuilder,
+  DocumentSnapshot? nextPageMarker,
+  required int pageSize,
+  required bool isStream,
+}) =>
+        queryCollectionPage(
+          ServiciosSinListaRecord.collection,
+          ServiciosSinListaRecord.serializer,
+          queryBuilder: queryBuilder,
+          nextPageMarker: nextPageMarker,
+          pageSize: pageSize,
+          isStream: isStream,
+        );
 
 Future<int> queryCollectionCount(
   Query collection, {

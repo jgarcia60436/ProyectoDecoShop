@@ -1,19 +1,20 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/componentes/ayuda1/ayuda1_widget.dart';
 import '/componentes/ayuda2/ayuda2_widget.dart';
 import '/componentes/ayuda3/ayuda3_widget.dart';
 import '/componentes/consulta_enviada/consulta_enviada_widget.dart';
-import '/componentes/whatsapp/whatsapp_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'ayuda_model.dart';
@@ -41,8 +42,8 @@ class _AyudaWidgetState extends State<AyudaWidget>
           curve: Curves.easeInOut,
           delay: 170.ms,
           duration: 560.ms,
-          begin: 0.0,
-          end: 1.0,
+          begin: Offset(0.0, 0.0),
+          end: Offset(1.0, 1.0),
         ),
       ],
     ),
@@ -53,8 +54,8 @@ class _AyudaWidgetState extends State<AyudaWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: 1.0,
-          end: 1.0,
+          begin: Offset(1.0, 1.0),
+          end: Offset(1.0, 1.0),
         ),
       ],
     ),
@@ -167,6 +168,10 @@ class _AyudaWidgetState extends State<AyudaWidget>
                         style: FlutterFlowTheme.of(context).bodyMedium,
                       ),
                       InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
                         onTap: () async {
                           await showModalBottomSheet(
                             isScrollControlled: true,
@@ -184,7 +189,7 @@ class _AyudaWidgetState extends State<AyudaWidget>
                                       .viewInsets,
                                   child: Container(
                                     height: MediaQuery.of(context).size.height *
-                                        0.4,
+                                        0.53,
                                     child: Ayuda1Widget(),
                                   ),
                                 ),
@@ -212,11 +217,15 @@ class _AyudaWidgetState extends State<AyudaWidget>
                         style: FlutterFlowTheme.of(context).bodyMedium,
                       ),
                       InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
                         onTap: () async {
                           await showModalBottomSheet(
                             isScrollControlled: true,
                             backgroundColor:
-                                FlutterFlowTheme.of(context).primaryBackground,
+                                FlutterFlowTheme.of(context).primaryBtnText,
                             barrierColor: Color(0x00000000),
                             enableDrag: false,
                             context: context,
@@ -229,7 +238,7 @@ class _AyudaWidgetState extends State<AyudaWidget>
                                       .viewInsets,
                                   child: Container(
                                     height: MediaQuery.of(context).size.height *
-                                        0.4,
+                                        0.53,
                                     child: Ayuda2Widget(),
                                   ),
                                 ),
@@ -254,10 +263,14 @@ class _AyudaWidgetState extends State<AyudaWidget>
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        '¿Cuanta garantía tienen los productos?',
+                        '¿Hay garantía en los productos?',
                         style: FlutterFlowTheme.of(context).bodyMedium,
                       ),
                       InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
                         onTap: () async {
                           await showModalBottomSheet(
                             isScrollControlled: true,
@@ -275,7 +288,7 @@ class _AyudaWidgetState extends State<AyudaWidget>
                                       .viewInsets,
                                   child: Container(
                                     height: MediaQuery.of(context).size.height *
-                                        0.4,
+                                        0.53,
                                     child: Ayuda3Widget(),
                                   ),
                                 ),
@@ -297,42 +310,14 @@ class _AyudaWidgetState extends State<AyudaWidget>
                       EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 20.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Text(
-                        '¿Deseas contactar a un agente?',
-                        style: FlutterFlowTheme.of(context).bodyMedium,
-                      ),
-                      InkWell(
-                        onTap: () async {
-                          await showModalBottomSheet(
-                            isScrollControlled: true,
-                            backgroundColor:
-                                FlutterFlowTheme.of(context).primaryBtnText,
-                            barrierColor: Color(0x00000000),
-                            enableDrag: false,
-                            context: context,
-                            builder: (bottomSheetContext) {
-                              return GestureDetector(
-                                onTap: () => FocusScope.of(context)
-                                    .requestFocus(_unfocusNode),
-                                child: Padding(
-                                  padding: MediaQuery.of(bottomSheetContext)
-                                      .viewInsets,
-                                  child: Container(
-                                    height: MediaQuery.of(context).size.height *
-                                        0.4,
-                                    child: WhatsappWidget(),
-                                  ),
-                                ),
-                              );
-                            },
-                          ).then((value) => setState(() {}));
-                        },
-                        child: Icon(
-                          Icons.chevron_right_sharp,
-                          color: Colors.black,
-                          size: 28.0,
+                      Container(
+                        width: MediaQuery.of(context).size.width * 0.7,
+                        height: 40.0,
+                        child: custom_widgets.Whatsapp(
+                          width: MediaQuery.of(context).size.width * 0.7,
+                          height: 40.0,
                         ),
                       ),
                     ],
@@ -364,7 +349,7 @@ class _AyudaWidgetState extends State<AyudaWidget>
                 ),
                 Padding(
                   padding:
-                      EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 20.0),
+                      EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 20.0),
                   child: TextFormField(
                     controller: _model.txtconsultasController,
                     autofocus: true,
@@ -424,6 +409,9 @@ class _AyudaWidgetState extends State<AyudaWidget>
                   onPressed: () async {
                     final consultasCreateData = createConsultasRecordData(
                       comentario: _model.txtconsultasController.text,
+                      nombreUsuario: currentUserDisplayName,
+                      correo: currentUserEmail,
+                      telefono: currentPhoneNumber,
                     );
                     var consultasRecordReference =
                         ConsultasRecord.collection.doc();

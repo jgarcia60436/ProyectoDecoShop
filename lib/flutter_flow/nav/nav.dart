@@ -1,12 +1,13 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:go_router/go_router.dart';
 import 'package:page_transition/page_transition.dart';
 import '../flutter_flow_theme.dart';
 import '../../backend/backend.dart';
 
-import '../../auth/firebase_user_provider.dart';
+import '../../auth/base_auth_user_provider.dart';
 
 import '../../index.dart';
 import '../../main.dart';
@@ -20,8 +21,8 @@ export 'serialization_util.dart';
 const kTransitionInfoKey = '__transition_info__';
 
 class AppStateNotifier extends ChangeNotifier {
-  ProyectoDecoShopFirebaseUser? initialUser;
-  ProyectoDecoShopFirebaseUser? user;
+  BaseAuthUser? initialUser;
+  BaseAuthUser? user;
   bool showSplashImage = true;
   String? _redirectLocation;
 
@@ -46,7 +47,7 @@ class AppStateNotifier extends ChangeNotifier {
   /// to perform subsequent actions (such as navigation) afterwards.
   void updateNotifyOnAuthChange(bool notify) => notifyOnAuthChange = notify;
 
-  void update(ProyectoDecoShopFirebaseUser newUser) {
+  void update(BaseAuthUser newUser) {
     initialUser ??= newUser;
     user = newUser;
     // Refresh the app on auth change unless explicitly marked otherwise.
@@ -314,6 +315,37 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 direccionP: params.getParam('direccionP', ParamType.String),
                 telefonoP: params.getParam('telefonoP', ParamType.int),
               ),
+            ),
+            FFRoute(
+              name: 'AProductos',
+              path: 'aProductos',
+              builder: (context, params) => AProductosWidget(),
+            ),
+            FFRoute(
+              name: 'ProductosAdmin',
+              path: 'productosAdmin',
+              builder: (context, params) => NavBarPage(
+                initialPage: '',
+                page: ProductosAdminWidget(
+                  productosRef: params.getParam('productosRef',
+                      ParamType.DocumentReference, false, ['productos']),
+                ),
+              ),
+            ),
+            FFRoute(
+              name: 'EProductos',
+              path: 'eProductos',
+              builder: (context, params) => EProductosWidget(
+                pNombre: params.getParam('pNombre', ParamType.String),
+                pPrecio: params.getParam('pPrecio', ParamType.String),
+                pDescripcion: params.getParam('pDescripcion', ParamType.String),
+                pCantidad: params.getParam('pCantidad', ParamType.String),
+                pImagen: params.getParam('pImagen', ParamType.String),
+                pOferta: params.getParam('pOferta', ParamType.bool),
+                pDescuento: params.getParam('pDescuento', ParamType.String),
+                pReferenciaProducto: params.getParam('pReferenciaProducto',
+                    ParamType.DocumentReference, false, ['productos']),
+              ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
@@ -501,8 +533,9 @@ class FFRoute {
                   child: SizedBox(
                     width: 50.0,
                     height: 50.0,
-                    child: CircularProgressIndicator(
+                    child: SpinKitChasingDots(
                       color: FlutterFlowTheme.of(context).primary,
+                      size: 50.0,
                     ),
                   ),
                 )

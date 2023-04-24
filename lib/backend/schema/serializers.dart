@@ -9,6 +9,7 @@ import 'clientes_record.dart';
 import 'clientes_mayoristas_record.dart';
 import 'empleados_record.dart';
 import 'provedores_record.dart';
+import 'servicios_sin_lista_record.dart';
 
 import 'index.dart';
 
@@ -27,6 +28,7 @@ const kDocumentReferenceField = 'Document__Reference__Field';
   ClientesMayoristasRecord,
   EmpleadosRecord,
   ProvedoresRecord,
+  ServiciosSinListaRecord,
 ])
 final Serializers serializers = (_$serializers.toBuilder()
       ..add(DocumentReferenceSerializer())
@@ -211,6 +213,9 @@ Map<String, dynamic> mapToFirestore(Map<String, dynamic> data) =>
       }
       return MapEntry(key, value);
     });
+
+List<GeoPoint>? convertToGeoPointList(List<LatLng>? list) =>
+    list?.map((e) => e.toGeoPoint()).toList();
 
 extension GeoPointExtension on LatLng {
   GeoPoint toGeoPoint() => GeoPoint(latitude, longitude);

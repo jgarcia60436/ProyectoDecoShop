@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/componentes/b_s_valida_contra/b_s_valida_contra_widget.dart';
 import '/componentes/b_s_valida_contrasenas/b_s_valida_contrasenas_widget.dart';
@@ -10,6 +10,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'registrarse_model.dart';
@@ -306,6 +307,8 @@ class _RegistrarseWidgetState extends State<RegistrarseWidget> {
                                   _model.txtContraController.text)
                               .toString();
                         });
+                        await Future.delayed(
+                            const Duration(milliseconds: 7500));
                         if (functions.validaCaracteresContra(
                                 _model.txtContraController.text) !=
                             true) {
@@ -472,7 +475,8 @@ class _RegistrarseWidgetState extends State<RegistrarseWidget> {
                                 return;
                               }
 
-                              final user = await createAccountWithEmail(
+                              final user =
+                                  await authManager.createAccountWithEmail(
                                 context,
                                 _model.txtCorreoController.text,
                                 _model.txtContraController.text,

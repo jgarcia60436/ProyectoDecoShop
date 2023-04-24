@@ -3,11 +3,13 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -154,8 +156,9 @@ class _ProductoWidgetState extends State<ProductoWidget>
             child: SizedBox(
               width: 50.0,
               height: 50.0,
-              child: CircularProgressIndicator(
+              child: SpinKitChasingDots(
                 color: FlutterFlowTheme.of(context).primary,
+                size: 50.0,
               ),
             ),
           );
@@ -330,7 +333,7 @@ class _ProductoWidgetState extends State<ProductoWidget>
                                   width: 200.0,
                                   decoration: BoxDecoration(
                                     color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
+                                        .primaryBackground,
                                   ),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -340,6 +343,10 @@ class _ProductoWidgetState extends State<ProductoWidget>
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
                                             onTap: () async {
                                               setState(() {
                                                 FFAppState().addToCarrito(
@@ -479,47 +486,78 @@ class _ProductoWidgetState extends State<ProductoWidget>
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
                                     onTap: () async {
-                                      if (animationsMap[
-                                              'iconOnActionTriggerAnimation'] !=
-                                          null) {
-                                        setState(() => hasIconTriggered = true);
-                                        SchedulerBinding.instance
-                                            .addPostFrameCallback((_) async =>
-                                                await animationsMap[
-                                                        'iconOnActionTriggerAnimation']!
-                                                    .controller
-                                                    .forward(from: 0.0));
-                                      }
-                                      setState(() {
-                                        FFAppState().addToFavoritos(
-                                            widget.pReferencia!);
-                                        FFAppState().corazon = true;
-                                      });
-                                      ScaffoldMessenger.of(context)
-                                          .clearSnackBars();
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(
-                                        SnackBar(
-                                          content: Text(
-                                            'Agregado a favoritos',
-                                            style: TextStyle(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
+                                      if (functions.validarFavoritos(
+                                              widget.pReferencia!,
+                                              FFAppState()
+                                                  .favoritos
+                                                  .toList()) ==
+                                          false) {
+                                        if (animationsMap[
+                                                'iconOnActionTriggerAnimation'] !=
+                                            null) {
+                                          setState(
+                                              () => hasIconTriggered = true);
+                                          SchedulerBinding.instance
+                                              .addPostFrameCallback((_) async =>
+                                                  await animationsMap[
+                                                          'iconOnActionTriggerAnimation']!
+                                                      .controller
+                                                      .forward(from: 0.0));
+                                        }
+                                        setState(() {
+                                          FFAppState().addToFavoritos(
+                                              widget.pReferencia!);
+                                          FFAppState().corazon = true;
+                                        });
+                                        ScaffoldMessenger.of(context)
+                                            .clearSnackBars();
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          SnackBar(
+                                            content: Text(
+                                              'Agregado a favoritos',
+                                              style: TextStyle(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .lineColor,
+                                              ),
+                                            ),
+                                            duration:
+                                                Duration(milliseconds: 3000),
+                                            backgroundColor: Color(0xFF152D68),
+                                            action: SnackBarAction(
+                                              label: 'Ir a favoritos',
+                                              onPressed: () async {
+                                                context.pushNamed('Favorite');
+                                              },
                                             ),
                                           ),
-                                          duration:
-                                              Duration(milliseconds: 3000),
-                                          backgroundColor: Color(0xFFDADDDF),
-                                          action: SnackBarAction(
-                                            label: 'Ir a favoritos',
-                                            onPressed: () async {
-                                              context.pushNamed('Favorite');
-                                            },
-                                          ),
-                                        ),
-                                      );
+                                        );
+                                      } else {
+                                        await showDialog(
+                                          context: context,
+                                          builder: (alertDialogContext) {
+                                            return AlertDialog(
+                                              title: Text(widget.pNombre!),
+                                              content: Text(
+                                                  'El articulo ya se encuentra en tus favoritos!'),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(
+                                                          alertDialogContext),
+                                                  child: Text('Ok'),
+                                                ),
+                                              ],
+                                            );
+                                          },
+                                        );
+                                      }
                                     },
                                     child: Icon(
                                       Icons.favorite_rounded,

@@ -21,33 +21,21 @@ class _$ServiciosRecordSerializer
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[];
     Object? value;
-    value = object.nombre;
-    if (value != null) {
-      result
-        ..add('Nombre')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(String)));
-    }
-    value = object.precio;
-    if (value != null) {
-      result
-        ..add('Precio')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(double)));
-    }
-    value = object.descripcion;
-    if (value != null) {
-      result
-        ..add('Descripcion')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(String)));
-    }
     value = object.imagen;
     if (value != null) {
       result
         ..add('Imagen')
         ..add(serializers.serialize(value,
-            specifiedType: const FullType(String)));
+            specifiedType:
+                const FullType(BuiltList, const [const FullType(String)])));
+    }
+    value = object.nombre;
+    if (value != null) {
+      result
+        ..add('Nombre')
+        ..add(serializers.serialize(value,
+            specifiedType:
+                const FullType(BuiltList, const [const FullType(String)])));
     }
     value = object.ffRef;
     if (value != null) {
@@ -72,21 +60,17 @@ class _$ServiciosRecordSerializer
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
-        case 'Nombre':
-          result.nombre = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String?;
-          break;
-        case 'Precio':
-          result.precio = serializers.deserialize(value,
-              specifiedType: const FullType(double)) as double?;
-          break;
-        case 'Descripcion':
-          result.descripcion = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String?;
-          break;
         case 'Imagen':
-          result.imagen = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String?;
+          result.imagen.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(String)]))!
+              as BuiltList<Object?>);
+          break;
+        case 'Nombre':
+          result.nombre.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(String)]))!
+              as BuiltList<Object?>);
           break;
         case 'Document__Reference__Field':
           result.ffRef = serializers.deserialize(value,
@@ -103,22 +87,16 @@ class _$ServiciosRecordSerializer
 
 class _$ServiciosRecord extends ServiciosRecord {
   @override
-  final String? nombre;
+  final BuiltList<String>? imagen;
   @override
-  final double? precio;
-  @override
-  final String? descripcion;
-  @override
-  final String? imagen;
+  final BuiltList<String>? nombre;
   @override
   final DocumentReference<Object?>? ffRef;
 
   factory _$ServiciosRecord([void Function(ServiciosRecordBuilder)? updates]) =>
       (new ServiciosRecordBuilder()..update(updates))._build();
 
-  _$ServiciosRecord._(
-      {this.nombre, this.precio, this.descripcion, this.imagen, this.ffRef})
-      : super._();
+  _$ServiciosRecord._({this.imagen, this.nombre, this.ffRef}) : super._();
 
   @override
   ServiciosRecord rebuild(void Function(ServiciosRecordBuilder) updates) =>
@@ -132,20 +110,16 @@ class _$ServiciosRecord extends ServiciosRecord {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is ServiciosRecord &&
-        nombre == other.nombre &&
-        precio == other.precio &&
-        descripcion == other.descripcion &&
         imagen == other.imagen &&
+        nombre == other.nombre &&
         ffRef == other.ffRef;
   }
 
   @override
   int get hashCode {
     var _$hash = 0;
-    _$hash = $jc(_$hash, nombre.hashCode);
-    _$hash = $jc(_$hash, precio.hashCode);
-    _$hash = $jc(_$hash, descripcion.hashCode);
     _$hash = $jc(_$hash, imagen.hashCode);
+    _$hash = $jc(_$hash, nombre.hashCode);
     _$hash = $jc(_$hash, ffRef.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
@@ -154,10 +128,8 @@ class _$ServiciosRecord extends ServiciosRecord {
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'ServiciosRecord')
-          ..add('nombre', nombre)
-          ..add('precio', precio)
-          ..add('descripcion', descripcion)
           ..add('imagen', imagen)
+          ..add('nombre', nombre)
           ..add('ffRef', ffRef))
         .toString();
   }
@@ -167,21 +139,15 @@ class ServiciosRecordBuilder
     implements Builder<ServiciosRecord, ServiciosRecordBuilder> {
   _$ServiciosRecord? _$v;
 
-  String? _nombre;
-  String? get nombre => _$this._nombre;
-  set nombre(String? nombre) => _$this._nombre = nombre;
+  ListBuilder<String>? _imagen;
+  ListBuilder<String> get imagen =>
+      _$this._imagen ??= new ListBuilder<String>();
+  set imagen(ListBuilder<String>? imagen) => _$this._imagen = imagen;
 
-  double? _precio;
-  double? get precio => _$this._precio;
-  set precio(double? precio) => _$this._precio = precio;
-
-  String? _descripcion;
-  String? get descripcion => _$this._descripcion;
-  set descripcion(String? descripcion) => _$this._descripcion = descripcion;
-
-  String? _imagen;
-  String? get imagen => _$this._imagen;
-  set imagen(String? imagen) => _$this._imagen = imagen;
+  ListBuilder<String>? _nombre;
+  ListBuilder<String> get nombre =>
+      _$this._nombre ??= new ListBuilder<String>();
+  set nombre(ListBuilder<String>? nombre) => _$this._nombre = nombre;
 
   DocumentReference<Object?>? _ffRef;
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
@@ -194,10 +160,8 @@ class ServiciosRecordBuilder
   ServiciosRecordBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _nombre = $v.nombre;
-      _precio = $v.precio;
-      _descripcion = $v.descripcion;
-      _imagen = $v.imagen;
+      _imagen = $v.imagen?.toBuilder();
+      _nombre = $v.nombre?.toBuilder();
       _ffRef = $v.ffRef;
       _$v = null;
     }
@@ -219,13 +183,24 @@ class ServiciosRecordBuilder
   ServiciosRecord build() => _build();
 
   _$ServiciosRecord _build() {
-    final _$result = _$v ??
-        new _$ServiciosRecord._(
-            nombre: nombre,
-            precio: precio,
-            descripcion: descripcion,
-            imagen: imagen,
-            ffRef: ffRef);
+    _$ServiciosRecord _$result;
+    try {
+      _$result = _$v ??
+          new _$ServiciosRecord._(
+              imagen: _imagen?.build(), nombre: _nombre?.build(), ffRef: ffRef);
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'imagen';
+        _imagen?.build();
+        _$failedField = 'nombre';
+        _nombre?.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            r'ServiciosRecord', _$failedField, e.toString());
+      }
+      rethrow;
+    }
     replace(_$result);
     return _$result;
   }

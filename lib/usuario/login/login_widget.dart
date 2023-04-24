@@ -1,11 +1,11 @@
-import '/auth/auth_util.dart';
-import '/auth/firebase_user_provider.dart';
 import '/componentes/b_s_error_login/b_s_error_login_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'login_model.dart';
@@ -92,6 +92,10 @@ class _LoginWidgetState extends State<LoginWidget> {
                     children: [
                       if (Theme.of(context).brightness == Brightness.light)
                         InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
                           onTap: () async {
                             setDarkModeSetting(context, ThemeMode.dark);
                           },
@@ -103,6 +107,10 @@ class _LoginWidgetState extends State<LoginWidget> {
                         ),
                       if (Theme.of(context).brightness == Brightness.dark)
                         InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
                           onTap: () async {
                             setDarkModeSetting(context, ThemeMode.light);
                           },
@@ -253,6 +261,10 @@ class _LoginWidgetState extends State<LoginWidget> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
                         onTap: () async {
                           context.pushNamed('OlvidarContra');
                         },
@@ -277,21 +289,16 @@ class _LoginWidgetState extends State<LoginWidget> {
                     children: [
                       FFButtonWidget(
                         onPressed: () async {
-                          Function() _navigate = () {};
-                          GoRouter.of(context).prepareAuthEvent();
-
-                          final user = await signInWithEmail(
-                            context,
+                          _model.returnAuth = await actions.authFlutterFire(
                             _model.txtCorreoController.text,
                             _model.txtContraController.text,
+                            'Correo invalido',
+                            'Contraseña incorrecta',
+                            'Usuario no encontrado',
                           );
-                          if (user == null) {
-                            return;
-                          }
-
-                          _navigate =
-                              () => context.goNamedAuth('Home', mounted);
-                          if (!loggedIn) {
+                          if (_model.returnAuth == 'valid') {
+                            context.pushNamed('Home');
+                          } else {
                             await showModalBottomSheet(
                               isScrollControlled: true,
                               backgroundColor: Colors.transparent,
@@ -304,14 +311,19 @@ class _LoginWidgetState extends State<LoginWidget> {
                                   child: Padding(
                                     padding: MediaQuery.of(bottomSheetContext)
                                         .viewInsets,
-                                    child: BSErrorLoginWidget(),
+                                    child: Container(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.9,
+                                      child: BSErrorLoginWidget(),
+                                    ),
                                   ),
                                 );
                               },
                             ).then((value) => setState(() {}));
                           }
 
-                          _navigate();
+                          setState(() {});
                         },
                         text: 'Iniciar Sesión',
                         options: FFButtonOptions(

@@ -32,6 +32,7 @@ class FFAppState extends ChangeNotifier {
             ?.map((path) => path.ref)
             .toList() ??
         _clientesMinoristas;
+    _FavVacio = prefs.getBool('ff_FavVacio') ?? _FavVacio;
   }
 
   void update(VoidCallback callback) {
@@ -162,6 +163,13 @@ class FFAppState extends ChangeNotifier {
     _clientesMinoristas.removeAt(_index);
     prefs.setStringList('ff_clientesMinoristas',
         _clientesMinoristas.map((x) => x.path).toList());
+  }
+
+  bool _FavVacio = false;
+  bool get FavVacio => _FavVacio;
+  set FavVacio(bool _value) {
+    _FavVacio = _value;
+    prefs.setBool('ff_FavVacio', _value);
   }
 }
 
